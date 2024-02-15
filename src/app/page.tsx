@@ -15,11 +15,9 @@ export default function index() {
   const text1 = useRef(null);
   const text2 = useRef(null);
   const text3 = useRef(null);
-  const text4 = useRef(null);
 
   useEffect(() => {
-    //const tl = gsap.timeline();
-    gsap.to(text1.current, { duration: 3 });
+    gsap.fromTo(text1.current, { opacity: 0 }, { opacity: 1, duration: 2 });
   }, []);
 
   return (
@@ -31,17 +29,15 @@ export default function index() {
         style={{ width: "100%", marginTop: "-200px" }}
       />
       <section id="section1" className="section__item">
-      
-          <div className="section__item__text" ref={text1}>
-            🙋‍♀️안녕하세요
-          </div>
-          <div className="section__item__text" ref={text2}>
-            프론트엔드 개발자
-          </div>
-          <div className="section__item__text" ref={text3}>
-            우다영의 포트폴리오입니다.
-          </div>
-       
+        <div className="section__item__text" ref={text1}>
+          🙋‍♀️안녕하세요
+          <br />
+          프론트엔드 개발자
+          <br />
+          우다영입니다.
+        </div>
+        <div className="section__item__text" ref={text2}></div>
+        <div className="section__item__text" ref={text3}></div>
       </section>
     </div>
   );

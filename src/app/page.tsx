@@ -4,10 +4,8 @@ import Lottie from "react-lottie-player";
 import lottieJson from "../TopAnimation.json";
 import { useRef, useEffect } from "react";
 import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Container } from "postcss";
-
+import Section2 from "@/components/section2/page";
 gsap.registerPlugin(ScrollTrigger); // ScrollTrigger Trigger 호출
 
 export default function index() {
@@ -18,27 +16,30 @@ export default function index() {
 
   useEffect(() => {
     gsap.fromTo(text1.current, { opacity: 0 }, { opacity: 1, duration: 2 });
+    gsap.fromTo(text2.current, { opacity: 0 }, { opacity: 1, duration: 2 });
+    gsap.fromTo(text3.current, { opacity: 0 }, { opacity: 1, duration: 2 });
   }, []);
 
   return (
-    <div style={{ width: "100vw" }} ref={triggerRef}>
-      <Lottie
-        loop
-        animationData={lottieJson}
-        play
-        style={{ width: "100%", marginTop: "-200px" }}
-      />
-      <section id="section1" className="section__item">
-        <div className="section__item__text" ref={text1}>
-          🙋‍♀️안녕하세요
-          <br />
-          프론트엔드 개발자
-          <br />
-          우다영입니다.
-        </div>
-        <div className="section__item__text" ref={text2}></div>
-        <div className="section__item__text" ref={text3}></div>
-      </section>
-    </div>
+    <>
+      <div ref={triggerRef}>
+        <section id="section1" className="section__item">
+          <div className="section__item__title" ref={text1}>
+            🙋‍♀️반갑습니다.
+          </div>
+          <div className="section__item__text " ref={text2}>
+            FRONTEND DEVELOPER 우다영입니다.
+          </div>
+        </section>
+        <Lottie
+          loop
+          animationData={lottieJson}
+          play
+          className="lottie__item_bg"
+        />
+
+        <Section2 />
+      </div>
+    </>
   );
 }

@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaMoon, FaSun, FaExternalLinkAlt, FaCertificate, FaBriefcase, FaGraduationCap } from 'react-icons/fa';
-
+import Image from 'next/image';
 
 const certifications = [
   { id: 1, name: "AWS Certified Developer - Associate", issuer: "Amazon Web Services", date: "2023" },
@@ -102,14 +102,14 @@ export default function Home() {
     <div className={`${darkMode ? 'dark' : ''} transition-colors duration-300`}>
       <main className="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white min-h-screen">
         <nav className="fixed top-0 left-0 right-0 bg-white dark:bg-gray-800 shadow-md z-50">
-          <div className="container mx-auto px-6 py-4 flex justify-between items-center">
+          <div className="container mx-auto px-6ㅌ flex justify-between items-center">
             <motion.h1 
-              className="text-2xl font-bold text-orange-500"
+              className="font-bold text-orange-500"
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
-              Your Name
+               <img src="/logo.svg" alt="Logo" width={120} height={120} />
             </motion.h1>
             <div className="flex items-center">
               {['about', 'career', 'project', 'certifications', 'activities', 'contact'].map((section) => (
@@ -158,7 +158,7 @@ export default function Home() {
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.4, duration: 0.5 }}
             >
-              Creating user-centric clean code solutions
+              프론트엔드 개발자 우다영의 포트폴리오에 오신 것을 환영합니다. 
             </motion.p>
             <motion.a
               href="#project"
@@ -180,22 +180,32 @@ export default function Home() {
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
         >
-          <div className="container mx-auto px-6">
+        <div className="container mx-auto px-6">
             <h2 className="text-4xl font-bold mb-8 text-orange-500">About Me</h2>
-            <p className="mb-4 text-gray-700 dark:text-gray-300">I'm a passionate frontend developer with X years of experience...</p>
-            <h3 className="text-2xl font-bold mb-4 text-orange-500">Skills</h3>
-            <div className="flex flex-wrap justify-center">
-              {["React", "Next.js", "TypeScript", "Tailwind CSS"].map((skill) => (
-                <motion.span
-                  key={skill}
-                  className="bg-orange-100 dark:bg-orange-900 text-orange-800 dark:text-orange-100 px-3 py-1 rounded-full m-1"
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  {skill}
-                </motion.span>
-              ))}
+            <div className="flex">
+              <img src="https://avatars.githubusercontent.com/u/131967254?v=4" alt='profile' className="w-60 h-60 rounded-full object-coverm mr-16" />
+              <div>
+                <h3 className="text-2xl font-semibold mb-4">👋🏻 안녕하세요 프론트엔드 개발자 우다영입니다.</h3>
+                <b className="text-md">📧 Email</b> 
+                <p>iamwooda0@gmail.com</p>
+                <b>🖥 Github</b> 
+                <p><a href="https://github.com/DaYoung-woo">https://github.com/DaYoung-woo</a></p>
+                <b>📔 Blog</b> 
+                <p><a href="https://velog.io/@iamwooda/posts">https://velog.io/@iamwooda</a></p>
+              </div>
             </div>
+            <h4 className="text-xl font-semibold mt-8">원활한 의사 소통 능력</h4>
+            <p>
+              백엔드 개발자와 원활하게 소통할 수 있으며, 새로운 기능 추가나 변경 작업이 자주 발생하는 애자일한 개발 환경에서도 신속하게 대응할 수 있습니다.
+            </p>
+            <h4 className="text-xl font-semibold mt-4">읽기 쉬운 코드 작성</h4>
+            <p>
+            팀원들이 읽기 쉬운 코드 작성을 지향합니다. 이를 위해 복잡한 로직들은 분리하여 한 가지 기능만을 수행하는 함수를 설계하고 가급적 작게 만듭니다. 또한 직관적인 네이밍을 사용하여 함수의 역할을 명확하게 전달하고자 합니다.
+            </p>
+            <h4 className="text-xl font-semibold mt-4">읽기 쉬운 코드 작성</h4>
+            <p>
+            팀원들이 읽기 쉬운 코드 작성을 지향합니다. 이를 위해 복잡한 로직들은 분리하여 한 가지 기능만을 수행하는 함수를 설계하고 가급적 작게 만듭니다. 또한 직관적인 네이밍을 사용하여 함수의 역할을 명확하게 전달하고자 합니다.
+            </p>
           </div>
         </motion.section>
 
@@ -461,4 +471,4 @@ export default function Home() {
       </main>
     </div>
   );
-}
+} 

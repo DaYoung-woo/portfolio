@@ -5,9 +5,9 @@ import { FaGithub, FaLinkedin, FaMoon, FaSun, FaExternalLinkAlt, FaCertificate, 
 import Image from 'next/image';
 
 const certifications = [
-  { id: 1, name: "AWS Certified Developer - Associate", issuer: "Amazon Web Services", date: "2023" },
-  { id: 2, name: "Professional Scrum Master I (PSM I)", issuer: "Scrum.org", date: "2022" },
-  { id: 3, name: "JavaScript Algorithms and Data Structures", issuer: "freeCodeCamp", date: "2021" },
+  { id: 1, name: "정보처리기사", issuer: "한국산업인력공단", date: "2024-09-10", img: "/kisa.png", },
+  { id: 2, name: "리눅스마스터 2급", issuer: "한국정보통신진흥협회 ", date: "2024-06-28", img: "/linux.png" }, 
+  { id: 3, name: "네트워크 관리사 2급", issuer: "한국정보통신자격협회", date: "2024-04-09", img: "/network.png" },
 ];
 
 const project = {
@@ -66,12 +66,13 @@ const careerExperiences = [
 const activities = [
   {
     title: "클라우딩 어플리케이션 엔지니어링 데브코스",
-    description: "클라우드 애플리케이션 엔지니어링 데브코스 수업을 통해 React와 React Native에 대한 숙련도를 높였습니다. 열정적으로 참여하여 개인 프로젝트에서 좋은 결과를 도출하여 발표를 진행했습니다.",
-    videoLink: "https://www.youtube.com/your-presentation-video" // Replace with actual link
+    description: `클라우드 애플리케이션 엔지니어링 데브코스 수업을 통해 React와 React Native에 대한 숙련도를 높였습니다.\n 
+    열정적으로 참여하여 개인 프로젝트에서 좋은 결과를 도출하여 발표를 진행했습니다.`,
+    videoLink: "https://www.youtube.com/embed/0f9AZ6O93Ig" // Replace with actual link
   },
   {
     title: "2024 오픈소스 컨트리뷰션 아카데미",
-    description: "git 연동이 안 된 프로젝트에서 무한로딩이 발생하는 증상을 발견하여 이슈를 리포트했습니다. 같이 활동을 하는 팀원과 함께 문제를 해결하여 풀리퀘스트를 생성했습니다.",
+    description: "git 연동이 안 된 프로젝트에서 무한로딩이 발생하는 증상을 발견하여 이슈를 리포트했습니다.\n 같이 활동을 하는 팀원과 함께 문제를 해결하여 풀리퀘스트를 생성했습니다.",
     link: "https://github.com/your-contribution-link" // Replace with actual link
   }
 ];
@@ -187,9 +188,9 @@ export default function Home() {
               <div>
                 <h3 className="text-2xl font-semibold mb-4">👋🏻 안녕하세요 프론트엔드 개발자 우다영입니다.</h3>
                 <b className="text-md">📧 Email</b> 
-                <p>iamwooda0@gmail.com</p>
+                <p className="mb-2">iamwooda0@gmail.com</p>
                 <b>🖥 Github</b> 
-                <p><a href="https://github.com/DaYoung-woo">https://github.com/DaYoung-woo</a></p>
+                <p className="mb-2"><a href="https://github.com/DaYoung-woo">https://github.com/DaYoung-woo</a></p>
                 <b>📔 Blog</b> 
                 <p><a href="https://velog.io/@iamwooda/posts">https://velog.io/@iamwooda</a></p>
               </div>
@@ -200,11 +201,8 @@ export default function Home() {
             </p>
             <h4 className="text-xl font-semibold mt-4">읽기 쉬운 코드 작성</h4>
             <p>
-            팀원들이 읽기 쉬운 코드 작성을 지향합니다. 이를 위해 복잡한 로직들은 분리하여 한 가지 기능만을 수행하는 함수를 설계하고 가급적 작게 만듭니다. 또한 직관적인 네이밍을 사용하여 함수의 역할을 명확하게 전달하고자 합니다.
-            </p>
-            <h4 className="text-xl font-semibold mt-4">읽기 쉬운 코드 작성</h4>
-            <p>
-            팀원들이 읽기 쉬운 코드 작성을 지향합니다. 이를 위해 복잡한 로직들은 분리하여 한 가지 기능만을 수행하는 함수를 설계하고 가급적 작게 만듭니다. 또한 직관적인 네이밍을 사용하여 함수의 역할을 명확하게 전달하고자 합니다.
+            팀원들이 읽기 쉬운 코드 작성을 지향합니다. 이를 위해 복잡한 로직들은 분리하여 한 가지 기능만을 수행하는 함수를 설계하고 가급적 작게 만듭니다. <br/>
+            또한 직관적인 네이밍을 사용하여 함수의 역할을 명확하게 전달하고자 합니다.
             </p>
           </div>
         </motion.section>
@@ -220,38 +218,39 @@ export default function Home() {
         >
           <div className="container mx-auto px-6">
             <h2 className="text-4xl font-bold mb-8 text-orange-500">Career Experience</h2>
-            {careerExperiences.map((experience, index) => (
-              <motion.div
-                key={index}
-                className="mb-12 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6"
-                initial={{ y: 50, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                transition={{ delay: index * 0.1, duration: 0.5 }}
-                viewport={{ once: true }}
-              >
-                <div className="flex items-center mb-4">
-                  <FaBriefcase className="text-2xl text-orange-500 mr-2" />
-                  <h3 className="text-2xl font-semibold">{experience.company}</h3>
+            <motion.div
+              className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6"
+              initial={{ y: 50, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+            >
+              {careerExperiences.map((experience, index) => (
+                <div key={index} className={index !== 0 ? "mt-8 pt-8 border-t border-gray-200 dark:border-gray-700" : ""}>
+                  <div className="flex items-center mb-4">
+                    <FaBriefcase className="text-2xl text-orange-500 mr-2" />
+                    <h3 className="text-2xl font-semibold">{experience.company}</h3>
+                  </div>
+                  <p className="text-gray-600 dark:text-gray-400 mb-2">{experience.duration} ({experience.period})</p>
+                  <p className="text-gray-700 dark:text-gray-300 mb-4">{experience.description}</p>
+                  <h4 className="text-xl font-semibold mb-2 text-orange-500">Experience:</h4>
+                  <ul className="list-disc list-inside text-gray-700 dark:text-gray-300">
+                    {experience.experiences.map((exp, i) => (
+                      <motion.li
+                        key={i}
+                        className="mb-1"
+                        initial={{ x: -20, opacity: 0 }}
+                        whileInView={{ x: 0, opacity: 1 }}
+                        transition={{ delay: i * 0.1, duration: 0.3 }}
+                        viewport={{ once: true }}
+                      >
+                        {exp}
+                      </motion.li>
+                    ))}
+                  </ul>
                 </div>
-                <p className="text-gray-600 dark:text-gray-400 mb-2">{experience.duration} ({experience.period})</p>
-                <p className="text-gray-700 dark:text-gray-300 mb-4">{experience.description}</p>
-                <h4 className="text-xl font-semibold mb-2 text-orange-500">Experience:</h4>
-                <ul className="list-disc list-inside text-gray-700 dark:text-gray-300">
-                  {experience.experiences.map((exp, i) => (
-                    <motion.li
-                      key={i}
-                      className="mb-1"
-                      initial={{ x: -20, opacity: 0 }}
-                      whileInView={{ x: 0, opacity: 1 }}
-                      transition={{ delay: i * 0.1, duration: 0.3 }}
-                      viewport={{ once: true }}
-                    >
-                      {exp}
-                    </motion.li>
-                  ))}
-                </ul>
-              </motion.div>
-            ))}
+              ))}
+            </motion.div>
           </div>
         </motion.section>
 
@@ -317,46 +316,13 @@ export default function Home() {
               </div>
             </motion.div>
           </div>
-        </motion.section>
-
-        {/* Certifications Section */}
-        <motion.section
-          id="certifications"
-          className="py-20"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-        >
-          <div className="container mx-auto px-6">
-            <h2 className="text-4xl font-bold mb-8 text-orange-500">Certifications</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {certifications.map((cert, index) => (
-                <motion.div
-                  key={cert.id}
-                  className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6"
-                  initial={{ y: 50, opacity: 0 }}
-                  whileInView={{ y: 0, opacity: 1 }}
-                  transition={{ delay: index * 0.1, duration: 0.5 }}
-                  viewport={{ once: true }}
-                  whileHover={{ scale: 1.05 }}
-                >
-                  <div className="flex items-center mb-4">
-                    <FaCertificate className="text-2xl text-orange-500 mr-2" />
-                    <h3 className="text-xl font-semibold">{cert.name}</h3>
-                  </div>
-                  <p className="text-gray-600 dark:text-gray-400 mb-2">Issuer: {cert.issuer}</p>
-                  <p className="text-gray-600 dark:text-gray-400">Date: {cert.date}</p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </motion.section>
+        </motion.section> 
 
         {/* Activities Section */}
         <motion.section
           id="activities"
-          className="bg-white dark:bg-gray-800 py-20"
+          className="py-20"
+          
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
@@ -380,7 +346,7 @@ export default function Home() {
                 <p className="text-gray-700 dark:text-gray-300 mb-4">{activity.description}</p>
                 {activity.videoLink && (
                   <div className="mb-4">
-                    <h4 className="text-xl font-semibold mb-2 text-orange-500">Presentation Video:</h4>
+                    <h4 className="text-xl font-semibold mb-2 ">Presentation Video</h4>
                     <div className="aspect-w-16 aspect-h-9">
                       <motion.iframe 
                         src={activity.videoLink} 
@@ -394,6 +360,7 @@ export default function Home() {
                         viewport={{ once: true }}
                       />
                     </div>
+                    <h4 className="text-xl font-semibold mt-4">Demo Page</h4>
                   </div>
                 )}
                 {activity.link && (
@@ -412,6 +379,42 @@ export default function Home() {
             ))}
           </div>
         </motion.section>
+
+        {/* Certifications Section */}
+        <motion.section
+          id="certifications"
+          className="bg-white dark:bg-gray-800 py-20"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+        >
+          <div className="container mx-auto px-6">
+            <h2 className="text-4xl font-bold mb-8 text-orange-500">Certifications</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {certifications.map((cert, index) => (
+                <motion.div
+                  key={cert.id}
+                  className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6"
+                  initial={{ y: 50, opacity: 0 }}
+                  whileInView={{ y: 0, opacity: 1 }}
+                  transition={{ delay: index * 0.1, duration: 0.5 }}
+                  viewport={{ once: true }}
+                  whileHover={{ scale: 1.05 }}
+                >
+                  <div className="flex items-center mb-4">
+                    <h3 className="text-xl font-semibold">🏅 {cert.name}</h3>
+                  </div>
+                  <p className="text-gray-600 dark:text-gray-400 mb-2"><b>Issuer</b> {cert.issuer}</p>
+                  <p className="text-gray-600 dark:text-gray-400"><b>Date</b> {cert.date}</p>
+                  <img src={cert.img} alt={cert.name} className="mt-2 w-full object-cover" />
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </motion.section>
+
+        
 
         {/* Contact Section */}
         <motion.section

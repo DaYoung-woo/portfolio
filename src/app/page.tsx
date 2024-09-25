@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import {
   FaGithub,
   FaLinkedin,
@@ -12,7 +13,23 @@ import {
   FaBuilding,
   FaGraduationCap,
 } from "react-icons/fa";
-import { PiCertificateThin } from "react-icons/pi";
+
+const MotionImage = motion(Image);
+
+const ActivityImage = ({ src, alt }) => (
+  <div className="relative w-full max-w-[680px] mx-auto aspect-video">
+    <MotionImage
+      src={src}
+      alt={alt}
+      fill
+      sizes="(max-width: 680px) 100vw, 680px"
+      style={{ objectFit: "contain" }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+    />
+  </div>
+);
 
 const certifications = [
   {
@@ -102,6 +119,7 @@ const activities = [
     description: `클라우드 애플리케이션 엔지니어링 데브코스 수업을 통해 React와 React Native에 대한 숙련도를 높였습니다.\n 
     열정적으로 참여하여 개인 프로젝트에서 좋은 결과를 도출하여 발표를 진행했습니다.`,
     videoLink: "https://www.youtube.com/embed/0f9AZ6O93Ig", // Replace with actual link
+    experience: "2024.04 - 2024.09",
   },
   {
     title: "2024 오픈소스 컨트리뷰션 아카데미",
@@ -249,9 +267,7 @@ export default function Home() {
             viewport={{ once: true }}
           >
             <div className="container mx-auto px-6">
-              <h2 className="text-4xl font-bold mb-8 text-orange-500">
-                👩🏻‍💼 About
-              </h2>
+              <h2 className="text-4xl font-bold mb-8 text-orange-500">About</h2>
               <div className="flex">
                 <img
                   src="https://avatars.githubusercontent.com/u/131967254?v=4"
@@ -278,9 +294,10 @@ export default function Home() {
                   </p>
                 </div>
               </div>
-              <h4 className="text-xl font-semibold mt-8">
-                원활한 의사 소통 능력
-              </h4>
+              <h3 className="text-2xl font-boldflex items-center mt-8">
+                👩🏻‍💻 Introduce
+              </h3>
+              <h4 className="text-xl font-semibold ">원활한 의사 소통 능력</h4>
               <p>
                 백엔드 개발자와 원활하게 소통할 수 있으며, 새로운 기능 추가나
                 변경 작업이 자주 발생하는 애자일한 개발 환경에서도 신속하게
@@ -363,7 +380,7 @@ export default function Home() {
                   <p className="text-gray-600 dark:text-gray-400 mb-2">
                     {experience.period}
                   </p>
-                  <p className="text-gray-700 dark:text-gray-300  ">
+                  <p className="text-gray-700 dark:text-gray-300">
                     클라우드 애플리케이션 엔지니어링 데브코스 수업을 통해
                     React와 React Native에 대한 숙련도를 높였습니다.
                   </p>
@@ -512,7 +529,7 @@ export default function Home() {
                           frameBorder="0"
                           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                           allowFullScreen
-                          className="absolute top-0 left-0 w-full h-full max-w-600px"
+                          className="absolute top-0 left-0 w-full h-full"
                           initial={{ opacity: 0, scale: 0.8 }}
                           whileInView={{ opacity: 1, scale: 1 }}
                           transition={{ duration: 0.5 }}
@@ -527,7 +544,7 @@ export default function Home() {
                 )}
                 {activity.link && (
                   <>
-                    <p className="text-gray-700 dark:text-gray-300 text-lg">
+                    <p className="text-gray-700 dark:text-gray-300">
                       git 연동이 안 된 프로젝트에서 무한로딩이 발생하는 증상을
                       발견하여 이슈를 리포트했습니다.
                     </p>
@@ -537,11 +554,19 @@ export default function Home() {
                     >
                       <FaExternalLinkAlt className="mr-2" /> View Issue
                     </a>
-                    <img src="./issue.gif" className="max-w-600px" />
+                    <ActivityImage src="/issue.gif" alt="issue" />
 
-                    <p className="text-gray-700 dark:text-gray-300 mt-12 text-lg">
-                      해당 이슈를 같이 활동을 하는 팀원과 함께 문제를 해결하여
-                      풀리퀘스트를 생성했습니다.
+                    <p className="text-gray-700 dark:text-gray-300 mt-12">
+                      해당 이슈를 같이 활동을 하는 팀원과 함께 문제를
+                      해결하였습니다.
+                    </p>
+                    <p className="text-gray-700 dark:text-gray-300">
+                      무한 로딩을 막고 하단 오른쪽에 Git이 연결되어 있지 않다는
+                      메시지를 보여주도록 변경하였습니다.
+                    </p>
+                    <p className="text-gray-700 dark:text-gray-300">
+                      또한 하단 왼쪽에 로딩 아이콘을 X아이콘으로 변경되도록
+                      설정하여 풀리퀘스트를 생성했습니다.
                     </p>
                     <a
                       className="flex items-center text-orange-500 hover:underline mt-2 mb-4"
@@ -549,7 +574,7 @@ export default function Home() {
                     >
                       <FaExternalLinkAlt className="mr-2" /> View Pull Request
                     </a>
-                    <img src="./fix.gif" className="max-w-600px" />
+                    <ActivityImage src="/fix.gif" alt="fix" />
                   </>
                 )}
               </motion.div>

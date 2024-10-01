@@ -12,7 +12,7 @@ import {
   FaGraduationCap,
   FaEnvelope,
   FaBars,
-  FaTimes
+  FaTimes,
 } from "react-icons/fa";
 import { SiVelog } from "react-icons/si";
 
@@ -163,7 +163,6 @@ const navItems = [
   "contact",
 ];
 
-
 export default function Home() {
   const [darkMode, setDarkMode] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
@@ -171,7 +170,6 @@ export default function Home() {
 
   useEffect(() => {
     const handleScroll = () => {
-      //const sections = ["hero", "about", "career", "project", "activities", "certifications", "contact"];
       const currentSection = navItems.find((section) => {
         const element = document.getElementById(section);
         if (element) {
@@ -185,13 +183,13 @@ export default function Home() {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [])
+  }, []);
 
   return (
     <div className={`${darkMode ? "dark" : ""} transition-colors duration-300`}>
       <main className="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white min-h-screen">
         <nav className="fixed top-0 left-0 right-0 bg-white dark:bg-gray-800 shadow-md z-50">
-          <div className="container mx-auto px-6 py-3">
+          <div className="container mx-auto px-6">
             <div className="flex justify-between items-center">
               <motion.h1
                 className="font-bold text-orange-500"
@@ -207,7 +205,9 @@ export default function Home() {
                     key={item}
                     href={`#${item}`}
                     className={`capitalize ${
-                      activeSection === item ? "text-orange-500" : "hover:text-orange-500"
+                      activeSection === item
+                        ? "text-orange-500"
+                        : "hover:text-orange-500"
                     } transition-colors`}
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
@@ -256,7 +256,9 @@ export default function Home() {
                     key={item}
                     href={`#${item}`}
                     className={`block px-6 py-2 capitalize ${
-                      activeSection === item ? "text-orange-500" : "hover:text-orange-500"
+                      activeSection === item
+                        ? "text-orange-500"
+                        : "hover:text-orange-500"
                     } transition-colors`}
                     onClick={() => setIsOpen(false)}
                     whileHover={{ x: 5 }}
@@ -273,36 +275,48 @@ export default function Home() {
         <AnimatePresence>
           <motion.section
             id="hero"
-            className="container mx-auto px-6 py-32 text-center min-h-screen flex flex-col justify-center items-center"
+            className="relative w-full min-h-screen flex flex-col justify-center items-center"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <motion.p
-              className="text-xl mb-8 text-gray-600 dark:text-gray-300"
-              initial={{ y: 50, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.4, duration: 0.5 }}
-            >
-              👋🏻 안녕하세요
-            </motion.p>
-            <motion.h2
-              className="text-6xl font-bold mb-4"
-              initial={{ y: -50, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.2, duration: 0.5 }}
-            >
-              Frontend Developer
-            </motion.h2>
-            <motion.h3
-              className="text-2xl mb-8 text-gray-600 dark:text-gray-300"
-              initial={{ y: 50, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.4, duration: 0.5 }}
-            >
-              우다영의 포트폴리오입니다
-            </motion.h3>
+            {/* 배경 이미지 */}
+            <div
+              className="absolute top-0 left-0 w-full h-full bg-cover bg-center z-0"
+              style={{ backgroundImage: "url('/hero-background.jpg')" }} // 이미지 경로를 적절히 수정해주세요
+            ></div>
+
+            {/* 반투명 오버레이 */}
+            <div className="absolute top-0 left-0 w-full h-full bg-black opacity-50 z-10"></div>
+
+            {/* 컨텐츠 */}
+            <div className="container mx-auto px-6 text-center relative z-20">
+              <motion.p
+                className="text-xl mb-8 text-gray-200"
+                initial={{ y: 50, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.4, duration: 0.5 }}
+              >
+                👋🏻 안녕하세요
+              </motion.p>
+              <motion.h2
+                className="text-6xl font-bold mb-4 text-white"
+                initial={{ y: -50, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.2, duration: 0.5 }}
+              >
+                Frontend Developer
+              </motion.h2>
+              <motion.h3
+                className="text-2xl mb-8 text-gray-200"
+                initial={{ y: 50, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.4, duration: 0.5 }}
+              >
+                우다영입니다
+              </motion.h3>
+            </div>
           </motion.section>
         </AnimatePresence>
 
@@ -339,7 +353,7 @@ export default function Home() {
                 transition={{ duration: 0.5 }}
               >
                 <h3 className="text-2xl font-semibold mb-6 text-gray-800 dark:text-gray-200">
-                  👋🏻 안녕하세요 프론트엔드 개발자 우다영입니다.
+                  우다영
                 </h3>
                 <div className="space-y-4">
                   <motion.div
@@ -348,9 +362,7 @@ export default function Home() {
                     transition={{ type: "spring", stiffness: 400, damping: 10 }}
                   >
                     <FaEnvelope className="text-orange-500 mr-3 text-xl" />
-                    <p className="text-gray-700 dark:text-gray-300">
-                      iamwooda0@gmail.com
-                    </p>
+                    <p>iamwooda0@gmail.com</p>
                   </motion.div>
                   <motion.div
                     className="flex items-center"
@@ -409,10 +421,26 @@ export default function Home() {
                     읽기 쉬운 코드 작성
                   </h4>
                   <p className="text-gray-700 dark:text-gray-300">
-                    팀원들이 읽기 쉬운 코드 작성을 지향합니다. 이를 위해 복잡한
-                    로직들은 분리하여 한 가지 기능만을 수행하는 함수를 설계하고
-                    가급적 작게 만듭니다. 또한 직관적인 네이밍을 사용하여 함수의
-                    역할을 명확하게 전달하고자 합니다.
+                    팀원들이 읽기 쉬운 코드 작성을 지향합니다. <br />
+                    이를 위해 복잡한 로직들은 분리하여 한 가지 기능만을 수행하는
+                    함수를 설계하고 가급적 작게 만듭니다. <br />
+                    또한 직관적인 네이밍을 사용하여 함수의 역할을 명확하게
+                    전달하고자 합니다.
+                  </p>
+                </motion.div>
+                <motion.div
+                  className="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md"
+                  whileHover={{ scale: 1.03 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                >
+                  <h4 className="text-lg font-semibold mb-2 text-orange-500">
+                    지속적인 자기 개발
+                  </h4>
+                  <p className="text-gray-700 dark:text-gray-300">
+                    빠르게 변화하는 프론트엔드 기술 생태계에서 최신 트렌드를
+                    주시하고 새로운 기술을 학습하는 데 열정적입니다. <br />
+                    개인 프로젝트와 오픈소스 기여를 통해 실무에 적용 가능한
+                    기술을 꾸준히 습득하고 있습니다.
                   </p>
                 </motion.div>
               </div>
@@ -750,7 +778,7 @@ export default function Home() {
               transition={{ delay: 0.2, duration: 0.5 }}
               viewport={{ once: true }}
             >
-              I'm always open to new opportunities and collaborations.
+              I&apos;m always open to new opportunities and collaborations.
             </motion.p>
             <div className="flex justify-center space-x-4">
               <motion.a

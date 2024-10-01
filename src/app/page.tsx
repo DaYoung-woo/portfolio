@@ -18,7 +18,13 @@ import { SiVelog } from "react-icons/si";
 
 const MotionImage = motion(Image);
 
-const ActivityImage = ({ src, alt }) => (
+// ActivityImage 컴포넌트
+interface ActivityImageProps {
+  src: string;
+  alt: string;
+}
+
+const ActivityImage: React.FC<ActivityImageProps> = ({ src, alt }) => (
   <div className="relative w-full max-w-[680px] mx-auto aspect-video">
     <MotionImage
       src={src}
@@ -192,7 +198,7 @@ export default function Home() {
           <div className="container mx-auto px-6">
             <div className="flex justify-between items-center">
               <motion.h1
-                className="font-bold text-orange-500"
+                className="font-bold text-sky-500"
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
@@ -206,8 +212,8 @@ export default function Home() {
                     href={`#${item}`}
                     className={`capitalize ${
                       activeSection === item
-                        ? "text-orange-500"
-                        : "hover:text-orange-500"
+                        ? "text-sky-500"
+                        : "hover:text-sky-500"
                     } transition-colors`}
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
@@ -217,7 +223,7 @@ export default function Home() {
                 ))}
                 <motion.button
                   onClick={() => setDarkMode(!darkMode)}
-                  className="ml-4 text-orange-500"
+                  className="ml-4 text-sky-500"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -227,7 +233,7 @@ export default function Home() {
               <div className="md:hidden flex items-center">
                 <motion.button
                   onClick={() => setDarkMode(!darkMode)}
-                  className="mr-4 text-orange-500"
+                  className="mr-4 text-sky-500"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -257,8 +263,8 @@ export default function Home() {
                     href={`#${item}`}
                     className={`block px-6 py-2 capitalize ${
                       activeSection === item
-                        ? "text-orange-500"
-                        : "hover:text-orange-500"
+                        ? "text-sky-500"
+                        : "hover:text-sky-500"
                     } transition-colors`}
                     onClick={() => setIsOpen(false)}
                     whileHover={{ x: 5 }}
@@ -330,9 +336,7 @@ export default function Home() {
           viewport={{ once: true }}
         >
           <div className="container mx-auto px-6">
-            <h2 className="text-4xl font-bold mb-12 text-orange-500">
-              About Me
-            </h2>
+            <h2 className="text-4xl font-bold mb-12 text-sky-500">About Me</h2>
             <div className="flex flex-col md:flex-row items-center justify-between">
               <motion.div
                 className="w-full md:w-1/3 mb-8 md:mb-0"
@@ -361,7 +365,7 @@ export default function Home() {
                     whileHover={{ scale: 1.05 }}
                     transition={{ type: "spring", stiffness: 400, damping: 10 }}
                   >
-                    <FaEnvelope className="text-orange-500 mr-3 text-xl" />
+                    <FaEnvelope className="text-sky-500 mr-3 text-xl" />
                     <p>iamwooda0@gmail.com</p>
                   </motion.div>
                   <motion.div
@@ -369,7 +373,7 @@ export default function Home() {
                     whileHover={{ scale: 1.05 }}
                     transition={{ type: "spring", stiffness: 400, damping: 10 }}
                   >
-                    <FaGithub className="text-orange-500 mr-3 text-xl" />
+                    <FaGithub className="text-sky-500 mr-3 text-xl" />
                     <a href="https://github.com/DaYoung-woo">
                       github.com/DaYoung-woo
                     </a>
@@ -379,7 +383,7 @@ export default function Home() {
                     whileHover={{ scale: 1.05 }}
                     transition={{ type: "spring", stiffness: 400, damping: 10 }}
                   >
-                    <SiVelog className="text-orange-500 mr-3 text-xl" />
+                    <SiVelog className="text-sky-500 mr-3 text-xl" />
                     <a href="https://velog.io/@iamwooda/posts">
                       velog.io/@iamwooda
                     </a>
@@ -394,7 +398,7 @@ export default function Home() {
               transition={{ duration: 0.5 }}
             >
               <h3 className="text-2xl font-bold flex items-center mb-6 text-gray-800 dark:text-gray-200">
-                <FaUserAlt className="text-orange-500 mr-3" />
+                <FaUserAlt className="text-sky-500 mr-3" />
                 Introduce
               </h3>
               <div className="space-y-6">
@@ -403,7 +407,7 @@ export default function Home() {
                   whileHover={{ scale: 1.03 }}
                   transition={{ type: "spring", stiffness: 400, damping: 10 }}
                 >
-                  <h4 className="text-lg font-semibold mb-2 text-orange-500">
+                  <h4 className="text-lg font-semibold mb-2 text-sky-500">
                     원활한 의사 소통 능력
                   </h4>
                   <p className="text-gray-700 dark:text-gray-300">
@@ -417,7 +421,7 @@ export default function Home() {
                   whileHover={{ scale: 1.03 }}
                   transition={{ type: "spring", stiffness: 400, damping: 10 }}
                 >
-                  <h4 className="text-lg font-semibold mb-2 text-orange-500">
+                  <h4 className="text-lg font-semibold mb-2 text-sky-500">
                     읽기 쉬운 코드 작성
                   </h4>
                   <p className="text-gray-700 dark:text-gray-300">
@@ -433,7 +437,7 @@ export default function Home() {
                   whileHover={{ scale: 1.03 }}
                   transition={{ type: "spring", stiffness: 400, damping: 10 }}
                 >
-                  <h4 className="text-lg font-semibold mb-2 text-orange-500">
+                  <h4 className="text-lg font-semibold mb-2 text-sky-500">
                     지속적인 자기 개발
                   </h4>
                   <p className="text-gray-700 dark:text-gray-300">
@@ -458,7 +462,7 @@ export default function Home() {
           viewport={{ once: true }}
         >
           <div className="container mx-auto px-6">
-            <h2 className="text-4xl font-bold mb-8 text-orange-500">Career</h2>
+            <h2 className="text-4xl font-bold mb-8 text-sky-500">Career</h2>
             <motion.div
               className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6"
               initial={{ y: 50, opacity: 0 }}
@@ -468,7 +472,7 @@ export default function Home() {
             >
               <div className="flex items-center mb-2">
                 <h3 className="text-2xl font-bold  flex items-center">
-                  <FaBuilding className="mr-2 text-orange-500" />
+                  <FaBuilding className="mr-2 text-sky-500" />
                   소프트캠프(SOFTCAMP)
                 </h3>
               </div>
@@ -481,7 +485,7 @@ export default function Home() {
                 {career.tech.map((tech, index) => (
                   <motion.span
                     key={tech}
-                    className="bg-orange-100 dark:bg-orange-900 text-orange-800 dark:text-orange-100 px-3 py-1 rounded-full text-sm mr-2 mb-2"
+                    className="bg-sky-100 dark:bg-sky-900 text-sky-800 dark:text-sky-100 px-3 py-1 rounded-full text-sm mr-2 mb-2"
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.1 }}
@@ -501,7 +505,7 @@ export default function Home() {
                   }
                 >
                   <div className="flex items-center mb-4">
-                    {/* <FaBriefcase className="text-2xl text-orange-500 mr-2" /> */}
+                    {/* <FaBriefcase className="text-2xl text-sky-500 mr-2" /> */}
                     <h3 className="text-xl font-semibold ">
                       {experience.company}
                     </h3>
@@ -540,9 +544,7 @@ export default function Home() {
           viewport={{ once: true }}
         >
           <div className="container mx-auto px-6">
-            <h2 className="text-4xl font-bold mb-8 text-orange-500">
-              My Project
-            </h2>
+            <h2 className="text-4xl font-bold mb-8 text-sky-500">My Project</h2>
             <motion.div
               className="bg-gray-50 dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden"
               whileHover={{ scale: 1.02 }}
@@ -554,7 +556,7 @@ export default function Home() {
                 className="w-full h-64 object-cover"
               />
               <div className="p-6">
-                <h3 className="text-2xl font-bold mb-4 text-orange-500">
+                <h3 className="text-2xl font-bold mb-4 text-sky-500">
                   {project.title}
                 </h3>
                 <p className="mb-4 text-gray-700 dark:text-gray-300">
@@ -564,14 +566,14 @@ export default function Home() {
                   {project.longDescription}
                 </p>
                 <div className="mb-6">
-                  <h4 className="text-xl font-semibold mb-2 text-orange-500">
+                  <h4 className="text-xl font-semibold mb-2 text-sky-500">
                     Technologies Used:
                   </h4>
                   <div className="flex flex-wrap">
                     {project.tech.map((tech, index) => (
                       <motion.span
                         key={tech}
-                        className="bg-orange-100 dark:bg-orange-900 text-orange-800 dark:text-orange-100 px-3 py-1 rounded-full text-sm mr-2 mb-2"
+                        className="bg-sky-100 dark:bg-sky-900 text-sky-800 dark:text-sky-100 px-3 py-1 rounded-full text-sm mr-2 mb-2"
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: index * 0.1 }}
@@ -586,7 +588,7 @@ export default function Home() {
                     href={project.githubLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center text-orange-500 hover:underline"
+                    className="flex items-center text-sky-500 hover:underline"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
@@ -596,7 +598,7 @@ export default function Home() {
                     href={project.liveLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center text-orange-500 hover:underline"
+                    className="flex items-center text-sky-500 hover:underline"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
@@ -618,9 +620,7 @@ export default function Home() {
           viewport={{ once: true }}
         >
           <div className="container mx-auto px-6">
-            <h2 className="text-4xl font-bold mb-8 text-orange-500">
-              Activities
-            </h2>
+            <h2 className="text-4xl font-bold mb-8 text-sky-500">Activities</h2>
             {activities.map((activity, index) => (
               <motion.div
                 key={index}
@@ -631,7 +631,7 @@ export default function Home() {
                 viewport={{ once: true }}
               >
                 <div className="flex items-center mb-4">
-                  <FaGraduationCap className="text-2xl text-orange-500 mr-2" />
+                  <FaGraduationCap className="text-2xl text-sky-500 mr-2" />
                   <h3 className="text-2xl font-semibold">{activity.title}</h3>
                 </div>
 
@@ -650,7 +650,7 @@ export default function Home() {
                     </p>
                     <div className="mb-4">
                       <a
-                        className="flex items-center text-orange-500 hover:underline mt-4 mb-2"
+                        className="flex items-center text-sky-500 hover:underline mt-4 mb-2"
                         href="https://video-editor-dayoung.netlify.app"
                       >
                         <FaExternalLinkAlt className="mr-2" /> Live Demo
@@ -681,7 +681,7 @@ export default function Home() {
                       발견하여 이슈를 리포트했습니다.
                     </p>
                     <a
-                      className="flex items-center text-orange-500 hover:underline mt-2 mb-4"
+                      className="flex items-center text-sky-500 hover:underline mt-2 mb-4"
                       href="https://github.com/githru/githru-vscode-ext/issues/520"
                     >
                       <FaExternalLinkAlt className="mr-2" /> View Issue
@@ -701,7 +701,7 @@ export default function Home() {
                       설정하여 풀리퀘스트를 생성했습니다.
                     </p>
                     <a
-                      className="flex items-center text-orange-500 hover:underline mt-2 mb-4"
+                      className="flex items-center text-sky-500 hover:underline mt-2 mb-4"
                       href="https://github.com/githru/githru-vscode-ext/pull/679"
                     >
                       <FaExternalLinkAlt className="mr-2" /> View Pull Request
@@ -724,7 +724,7 @@ export default function Home() {
           viewport={{ once: true }}
         >
           <div className="container mx-auto px-6">
-            <h2 className="text-4xl font-bold mb-8 text-orange-500">
+            <h2 className="text-4xl font-bold mb-8 text-sky-500">
               Certifications
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -768,7 +768,7 @@ export default function Home() {
           viewport={{ once: true }}
         >
           <div className="container mx-auto px-6 text-center">
-            <h2 className="text-4xl font-bold mb-8 text-orange-500">
+            <h2 className="text-4xl font-bold mb-8 text-sky-500">
               Get In Touch
             </h2>
             <motion.p
@@ -785,7 +785,7 @@ export default function Home() {
                 href="https://github.com/yourusername"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-3xl text-orange-500 hover:text-orange-600"
+                className="text-3xl text-sky-500 hover:text-sky-600"
                 whileHover={{ scale: 1.2, rotate: 360 }}
                 transition={{ type: "spring", stiffness: 260, damping: 20 }}
               >
@@ -795,7 +795,7 @@ export default function Home() {
                 href="https://velog.io/@iamwooda"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-3xl text-orange-500 hover:text-orange-600"
+                className="text-3xl text-sky-500 hover:text-sky-600"
                 whileHover={{ scale: 1.2, rotate: 360 }}
                 transition={{ type: "spring", stiffness: 260, damping: 20 }}
               >

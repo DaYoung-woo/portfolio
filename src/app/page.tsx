@@ -4,7 +4,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import {
   FaGithub,
-  FaUserAlt,
   FaMoon,
   FaSun,
   FaExternalLinkAlt,
@@ -15,6 +14,9 @@ import {
   FaTimes,
 } from "react-icons/fa";
 import { SiVelog } from "react-icons/si";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const MotionImage = motion(Image);
 
@@ -23,6 +25,16 @@ interface ActivityImageProps {
   src: string;
   alt: string;
 }
+
+const sliderSettings = {
+  dots: true,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  autoplay: true,
+  autoplaySpeed: 3000,
+};
 
 const ActivityImage: React.FC<ActivityImageProps> = ({ src, alt }) => (
   <div className="relative w-full max-w-[680px] mx-auto aspect-video">
@@ -64,15 +76,32 @@ const certifications = [
 ];
 
 const project = {
-  title: "My Amazing Project",
+  title: "🐽 PIGGY",
   description:
-    "This is a detailed description of my project. It showcases my skills in frontend development and problem-solving abilities.",
-  longDescription:
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-  tech: ["React", "Next.js", "Tailwind CSS", "Node.js"],
-  image: "/project-image.jpg",
-  githubLink: "https://github.com/yourusername/project",
+    "PIGGY는 사용자가 서로 약속을 생성하고, 그 정보를 함께 관리할 수 있는 커뮤니티 앱입니다.\n사용자는 약속 시간과 장소를 등록하고, 약속 시각에 해당 장소에서 위치 인증을 완료해야 합니다.\n인증에 성공하면 포인트를 획득할 수 있으며, 모은 포인트로 앱 내 상점에서 기프티콘을 구매할 수 있습니다.",
+  longDescription: "",
+  tech: [
+    "React",
+    "React-native",
+    "Supabase",
+    "Firebase",
+    "Node.js",
+    "Typescript",
+    "Zustand",
+  ],
+  images: ["/piggy/login.png", "/piggy/google.png", "/piggy/freinds.png"],
+  githubLink: "https://github.com/DaYoung-woo/Piggy",
   liveLink: "https://your-project-url.com",
+  features: [
+    "구글/카카오 소셜 로그인 기능",
+    "본인 확인을 위한 인증 번호 전송 기능",
+    "친구 관리 기능 및 친구에게 피기 선물하기 기능",
+    "fcm을 활용한 알람 기능",
+    "약속 생성 기능(멀티 파트 폼으로 구성하였으며 카카오 장소 검색 api 등을 연동)",
+    "약속 시간 10분전부터 약속 시간까지 약속 장소에서의 인증 기능(약속 인증 시 보상 피기포인트 지급)",
+    "기프티콘 상점/구매 기능",
+    "문의하기 기능",
+  ],
 };
 
 const careerExperiences = [
@@ -298,14 +327,6 @@ export default function Home() {
 
             {/* 컨텐츠 */}
             <div className="container mx-auto px-6 text-center relative z-20">
-              <motion.p
-                className="text-xl mb-8 text-gray-200"
-                initial={{ y: 50, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.4, duration: 0.5 }}
-              >
-                👋🏻 안녕하세요
-              </motion.p>
               <motion.h2
                 className="text-6xl font-bold mb-4 text-white"
                 initial={{ y: -50, opacity: 0 }}
@@ -314,14 +335,14 @@ export default function Home() {
               >
                 Frontend Developer
               </motion.h2>
-              <motion.h3
-                className="text-2xl mb-8 text-gray-200"
+              <motion.h2
+                className="text-2xl mb-8 text-white"
                 initial={{ y: 50, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.4, duration: 0.5 }}
               >
-                우다영입니다
-              </motion.h3>
+                우다영의 포트폴리오에 오신 것을 환영합니다.
+              </motion.h2>
             </div>
           </motion.section>
         </AnimatePresence>
@@ -359,7 +380,7 @@ export default function Home() {
                 transition={{ duration: 0.5 }}
               >
                 <h3 className="text-2xl font-semibold mb-6 text-gray-800 dark:text-gray-200">
-                  우다영
+                  👋🏻 안녕하세요 프론트엔드 개발자 우다영입니다.
                 </h3>
                 <div className="space-y-4">
                   <motion.div
@@ -399,10 +420,6 @@ export default function Home() {
               whileInView={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.5 }}
             >
-              <h3 className="text-2xl font-bold flex items-center mb-6 text-gray-800 dark:text-gray-200">
-                <FaUserAlt className="text-emerald-500 mr-3" />
-                Introduce
-              </h3>
               <div className="space-y-6">
                 <motion.div
                   className="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md"
@@ -554,25 +571,36 @@ export default function Home() {
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3 }}
             >
-              <img
-                src={project.image}
-                alt={project.title}
-                className="w-full h-64 object-cover"
-              />
+              <div
+                className="mx-auto"
+                style={{ width: "180px", height: "400px" }}
+              >
+                <Slider {...sliderSettings}>
+                  {project.images.map((image, index) => (
+                    <div
+                      key={index}
+                      style={{ width: "180px", height: "400px" }}
+                    >
+                      <img
+                        src={image}
+                        alt={`${project.title} screenshot ${index + 1}`}
+                      />
+                    </div>
+                  ))}
+                </Slider>
+              </div>
               <div className="p-6">
                 <h3 className="text-2xl font-bold mb-4 text-emerald-500">
                   {project.title}
                 </h3>
-                <p className="mb-4 text-gray-700 dark:text-gray-300">
+                <p className="mb-4 text-gray-700 dark:text-gray-300 whitespace-pre-wrap">
                   {project.description}
                 </p>
                 <p className="mb-6 text-gray-700 dark:text-gray-300">
                   {project.longDescription}
                 </p>
                 <div className="mb-6">
-                  <h4 className="text-xl font-semibold mb-2 text-emerald-500">
-                    Technologies Used:
-                  </h4>
+                  <h4 className="text-xl font-semibold mb-2 ">사용 기술:</h4>
                   <div className="flex flex-wrap">
                     {project.tech.map((tech, index) => (
                       <motion.span
@@ -587,6 +615,23 @@ export default function Home() {
                     ))}
                   </div>
                 </div>
+                <div className="mb-6">
+                  <h4 className="text-xl font-semibold mb-2 ">주요 기능:</h4>
+                  <ul className="list-disc list-inside text-gray-700 dark:text-gray-300">
+                    {project.features.map((feature, i) => (
+                      <motion.li
+                        key={i}
+                        className="mb-1"
+                        initial={{ x: -20, opacity: 0 }}
+                        whileInView={{ x: 0, opacity: 1 }}
+                        transition={{ delay: i * 0.1, duration: 0.3 }}
+                        viewport={{ once: true }}
+                      >
+                        {feature}
+                      </motion.li>
+                    ))}
+                  </ul>
+                </div>
                 <div className="flex space-x-4">
                   <motion.a
                     href={project.githubLink}
@@ -597,16 +642,6 @@ export default function Home() {
                     whileTap={{ scale: 0.95 }}
                   >
                     <FaGithub className="mr-2" /> View on GitHub
-                  </motion.a>
-                  <motion.a
-                    href={project.liveLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center text-emerald-500 hover:underline"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <FaExternalLinkAlt className="mr-2" /> Live Demo
                   </motion.a>
                 </div>
               </div>
@@ -774,18 +809,10 @@ export default function Home() {
           viewport={{ once: true }}
         >
           <div className="container mx-auto px-6 text-center">
-            <h2 className="text-4xl font-bold mb-8 text-emerald-500">
+            <h2 className="text-4xl font-bold mb-8 text-emerald-500 mb-8">
               Get In Touch
             </h2>
-            <motion.p
-              className="mb-8 text-gray-700 dark:text-gray-300"
-              initial={{ y: 20, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.2, duration: 0.5 }}
-              viewport={{ once: true }}
-            >
-              I&apos;m always open to new opportunities and collaborations.
-            </motion.p>
+
             <div className="flex justify-center space-x-4">
               <motion.a
                 href="https://github.com/yourusername"
@@ -808,6 +835,15 @@ export default function Home() {
                 <SiVelog />
               </motion.a>
             </div>
+            <motion.p
+              className="text-xl text-gray-700 dark:text-gray-300 mt-12 mb-8"
+              initial={{ y: 20, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.2, duration: 0.5 }}
+              viewport={{ once: true }}
+            >
+              읽어주셔서 감사합니다.
+            </motion.p>
           </div>
         </motion.section>
       </main>

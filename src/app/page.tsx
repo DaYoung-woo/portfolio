@@ -727,7 +727,7 @@ export default function Home() {
                     >
                       <FaExternalLinkAlt className="mr-2" /> View Issue
                     </a>
-                    <ActivityImage src="/issue.gif" alt="issue" />
+                    <ActivityImage src="/issue.png" alt="issue" />
 
                     <p className="text-gray-700 dark:text-gray-300 mt-12">
                       해당 이슈를 같이 활동을 하는 팀원과 함께 문제를
@@ -747,7 +747,7 @@ export default function Home() {
                     >
                       <FaExternalLinkAlt className="mr-2" /> View Pull Request
                     </a>
-                    <ActivityImage src="/fix.gif" alt="fix" />
+                    <ActivityImage src="/fix.png" alt="fix" />
                   </>
                 )}
               </motion.div>

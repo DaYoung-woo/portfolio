@@ -573,13 +573,13 @@ export default function Home() {
             >
               <div
                 className="mx-auto"
-                style={{ width: "180px", height: "400px" }}
+                style={{ width: "225px", height: "500px" }}
               >
                 <Slider {...sliderSettings}>
                   {project.images.map((image, index) => (
                     <div
                       key={index}
-                      style={{ width: "180px", height: "400px" }}
+                      style={{ width: "225px", height: "500px" }}
                     >
                       <img
                         src={image}

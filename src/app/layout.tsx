@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: "우다영 포트폴리오",
   description: "프론트엔드 개발자 우다영의 포트폴리오에 오신 것을 환영합니다.",
   icons: {
-    icon: "/w.ico",
+    icon: "/w.svg",
   },
 };
 

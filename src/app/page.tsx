@@ -26,16 +26,6 @@ interface ActivityImageProps {
   alt: string;
 }
 
-const sliderSettings = {
-  dots: true,
-  infinite: true,
-  speed: 500,
-  slidesToShow: 1,
-  slidesToScroll: 1,
-  autoplay: true,
-  autoplaySpeed: 3000,
-};
-
 const ActivityImage: React.FC<ActivityImageProps> = ({ src, alt }) => (
   <div className="relative w-full max-w-[680px] mx-auto aspect-video">
     <MotionImage
@@ -89,7 +79,20 @@ const project = {
     "Typescript",
     "Zustand",
   ],
-  images: ["/piggy/login.png", "/piggy/google.png", "/piggy/freinds.png"],
+  images: [
+    "/piggy/1.png",
+    "/piggy/2.png",
+    "/piggy/3.png",
+    "/piggy/3.png",
+    "/piggy/5.png",
+    "/piggy/6.png",
+    "/piggy/7.png",
+    "/piggy/8.png",
+    "/piggy/9.png",
+    "/piggy/10.png",
+    "/piggy/11.png",
+    "/piggy/12.png",
+  ],
   githubLink: "https://github.com/DaYoung-woo/Piggy",
   liveLink: "https://your-project-url.com",
   features: [
@@ -97,10 +100,17 @@ const project = {
     "본인 확인을 위한 인증 번호 전송 기능",
     "친구 관리 기능 및 친구에게 피기 선물하기 기능",
     "fcm을 활용한 알람 기능",
-    "약속 생성 기능(멀티 파트 폼으로 구성하였으며 카카오 장소 검색 api 등을 연동)",
+    "약속 생성 기능",
     "약속 시간 10분전부터 약속 시간까지 약속 장소에서의 인증 기능(약속 인증 시 보상 피기포인트 지급)",
     "기프티콘 상점/구매 기능",
     "문의하기 기능",
+  ],
+  contributes: [
+    "카카로 로그인",
+    "약속 생성(멀티파트폼)",
+    "약속 리스트",
+    "약속 상세",
+    "상점 물품 리스트",
   ],
 };
 
@@ -202,6 +212,45 @@ export default function Home() {
   const [darkMode, setDarkMode] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
   const [isOpen, setIsOpen] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const sliderSettings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    arrows: false,
+    appendDots: (dots) => (
+      <div
+        style={{
+          position: "absolute",
+          width: "100%",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          bottom: "-32px",
+        }}
+      >
+        <ul style={{ margin: "-12px", padding: "-12px" }}>{dots}</ul>
+      </div>
+    ),
+    customPaging: (i) => (
+      <div
+        style={{
+          width: "6px",
+          height: "6px",
+          margin: "0 -12px",
+          background: i === currentSlide ? "#10B981" : "#D1D5DB",
+          borderRadius: "50%",
+          display: "inline-block",
+        }}
+      />
+    ),
+    afterChange: (current) => setCurrentSlide(current),
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -571,78 +620,103 @@ export default function Home() {
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3 }}
             >
-              <div
-                className="mx-auto"
-                style={{ width: "225px", height: "500px" }}
-              >
-                <Slider {...sliderSettings}>
-                  {project.images.map((image, index) => (
-                    <div
-                      key={index}
-                      style={{ width: "225px", height: "500px" }}
-                    >
-                      <img
-                        src={image}
-                        alt={`${project.title} screenshot ${index + 1}`}
-                      />
-                    </div>
-                  ))}
-                </Slider>
-              </div>
-              <div className="p-6">
-                <h3 className="text-2xl font-bold mb-4 text-emerald-500">
-                  {project.title}
-                </h3>
-                <p className="mb-4 text-gray-700 dark:text-gray-300 whitespace-pre-wrap">
-                  {project.description}
-                </p>
-                <p className="mb-6 text-gray-700 dark:text-gray-300">
-                  {project.longDescription}
-                </p>
-                <div className="mb-6">
-                  <h4 className="text-xl font-semibold mb-2 ">사용 기술:</h4>
-                  <div className="flex flex-wrap">
-                    {project.tech.map((tech, index) => (
-                      <motion.span
-                        key={tech}
-                        className="bg-emerald-100 dark:bg-emerald-900 text-emerald-800 dark:text-emerald-100 px-3 py-1 rounded-full text-sm mr-2 mb-2"
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: index * 0.1 }}
-                      >
-                        {tech}
-                      </motion.span>
-                    ))}
+              <div className="flex flex-col lg:flex-row">
+                {/* Left side - Image Slider */}
+                <div className="lg:w-1/3 p-6">
+                  <div
+                    className="mx-auto relative"
+                    style={{ width: "300px", height: "680px" }}
+                  >
+                    <Slider {...sliderSettings}>
+                      {project.images.map((image, index) => (
+                        <div
+                          key={index}
+                          style={{ width: "300px", height: "680px" }}
+                        >
+                          <img
+                            src={image}
+                            alt={`${project.title} screenshot ${index + 1}`}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                      ))}
+                    </Slider>
                   </div>
                 </div>
-                <div className="mb-6">
-                  <h4 className="text-xl font-semibold mb-2 ">주요 기능:</h4>
-                  <ul className="list-disc list-inside text-gray-700 dark:text-gray-300">
-                    {project.features.map((feature, i) => (
-                      <motion.li
-                        key={i}
-                        className="mb-1"
-                        initial={{ x: -20, opacity: 0 }}
-                        whileInView={{ x: 0, opacity: 1 }}
-                        transition={{ delay: i * 0.1, duration: 0.3 }}
-                        viewport={{ once: true }}
-                      >
-                        {feature}
-                      </motion.li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="flex space-x-4">
-                  <motion.a
-                    href={project.githubLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center text-emerald-500 hover:underline"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <FaGithub className="mr-2" /> View on GitHub
-                  </motion.a>
+
+                {/* Right side - Project Details */}
+                <div className="lg:w-2/3 p-6">
+                  <h3 className="text-2xl font-bold mb-4 text-emerald-500">
+                    {project.title}
+                  </h3>
+                  <p className="mb-4 text-gray-700 dark:text-gray-300 whitespace-pre-wrap">
+                    {project.description}
+                  </p>
+                  <p className="mb-6 text-gray-700 dark:text-gray-300">
+                    {project.longDescription}
+                  </p>
+                  <div className="mb-6">
+                    <h4 className="text-xl font-semibold mb-2">사용 기술:</h4>
+                    <div className="flex flex-wrap">
+                      {project.tech.map((tech, index) => (
+                        <motion.span
+                          key={tech}
+                          className="bg-emerald-100 dark:bg-emerald-900 text-emerald-800 dark:text-emerald-100 px-3 py-1 rounded-full text-sm mr-2 mb-2"
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: index * 0.1 }}
+                        >
+                          {tech}
+                        </motion.span>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="mb-6">
+                    <h4 className="text-xl font-semibold mb-2">주요 기능:</h4>
+                    <ul className="list-disc list-inside text-gray-700 dark:text-gray-300">
+                      {project.features.map((feature, i) => (
+                        <motion.li
+                          key={i}
+                          className="mb-1"
+                          initial={{ x: -20, opacity: 0 }}
+                          whileInView={{ x: 0, opacity: 1 }}
+                          transition={{ delay: i * 0.1, duration: 0.3 }}
+                          viewport={{ once: true }}
+                        >
+                          {feature}
+                        </motion.li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className="mb-6">
+                    <h4 className="text-xl font-semibold mb-2">기여한 부분:</h4>
+                    <ul className="list-disc list-inside text-gray-700 dark:text-gray-300">
+                      {project.contributes.map((contribute, i) => (
+                        <motion.li
+                          key={i}
+                          className="mb-1"
+                          initial={{ x: -20, opacity: 0 }}
+                          whileInView={{ x: 0, opacity: 1 }}
+                          transition={{ delay: i * 0.1, duration: 0.3 }}
+                          viewport={{ once: true }}
+                        >
+                          {contribute}
+                        </motion.li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className="flex space-x-4">
+                    <motion.a
+                      href={project.githubLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center text-emerald-500 hover:underline"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      <FaGithub className="mr-2" /> View on GitHub
+                    </motion.a>
+                  </div>
                 </div>
               </div>
             </motion.div>

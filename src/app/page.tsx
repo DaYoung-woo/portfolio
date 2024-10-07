@@ -14,7 +14,7 @@ import {
   FaTimes,
 } from "react-icons/fa";
 import { SiVelog } from "react-icons/si";
-import Slider from "react-slick";
+import Slider, { Settings } from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -208,13 +208,20 @@ const navItems = [
   "contact",
 ];
 
+interface CustomSliderSettings
+  extends Omit<Settings, "appendDots" | "customPaging"> {
+  appendDots?: (dots: React.ReactNode) => React.ReactElement;
+  customPaging?: (i: number) => React.ReactElement;
+  afterChange?: (currentSlide: number) => void;
+}
+
 export default function Home() {
   const [darkMode, setDarkMode] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
   const [isOpen, setIsOpen] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  const sliderSettings = {
+  const sliderSettings: CustomSliderSettings = {
     dots: true,
     infinite: true,
     speed: 500,

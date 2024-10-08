@@ -799,8 +799,17 @@ export default function Home() {
                 {activity.link && (
                   <>
                     <p className="text-gray-700 dark:text-gray-300">
-                      git 연동이 안 된 프로젝트에서 무한로딩이 발생하는 증상을
-                      발견하여 이슈를 리포트했습니다.
+                      vscode의 익스텐션 중 하나로 Git 히스토리와 커밋, 기여
+                      내역을 시각적으로 쉽게 탐색할 수 있게 해주는 githru
+                      오픈소스에 참여하였습니다.
+                    </p>
+                    <p className="text-gray-700 dark:text-gray-300">
+                      git을 기반으로 동작하는 익스텐션이므로 git이 연동되지 않은
+                      프로젝트에서 githru를 사용하는 경우 무한 로딩이 발생하는
+                      것을 확인하였습니다.
+                    </p>
+                    <p className="text-gray-700 dark:text-gray-300">
+                      이 증상을에 대하여 이슈를 리포트했습니다.
                     </p>
                     <a
                       className="flex items-center text-emerald-500 hover:underline mt-2 mb-4"
@@ -811,8 +820,8 @@ export default function Home() {
                     <ActivityImage src="/issue.png" alt="issue" />
 
                     <p className="text-gray-700 dark:text-gray-300 mt-12">
-                      해당 이슈를 같이 활동을 하는 팀원과 함께 문제를
-                      해결하였습니다.
+                      해당 이슈를 같이 활동을 하는 팀원과 함께 짝코딩을 통해
+                      문제를 해결하였습니다.
                     </p>
                     <p className="text-gray-700 dark:text-gray-300">
                       무한 로딩을 막고 하단 오른쪽에 Git이 연결되어 있지 않다는

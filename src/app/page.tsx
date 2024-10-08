@@ -83,7 +83,7 @@ const project = {
     "/piggy/1.png",
     "/piggy/2.png",
     "/piggy/3.png",
-    "/piggy/3.png",
+    "/piggy/4.png",
     "/piggy/5.png",
     "/piggy/6.png",
     "/piggy/7.png",

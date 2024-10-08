@@ -896,7 +896,7 @@ export default function Home() {
 
             <div className="flex justify-center space-x-4">
               <motion.a
-                href="https://github.com/yourusername"
+                href="https://github.com/DaYoung-Woo"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-3xl text-emerald-500 hover:text-emerald-600"

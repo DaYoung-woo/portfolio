@@ -809,7 +809,8 @@ export default function Home() {
                       것을 확인하였습니다.
                     </p>
                     <p className="text-gray-700 dark:text-gray-300">
-                      이 증상을에 대하여 이슈를 리포트했습니다.
+                      이 증상은 사용자 경험에 부정적인 영향을 미칠 수 있어 해당
+                      이슈를 리포트했습니다
                     </p>
                     <a
                       className="flex items-center text-emerald-500 hover:underline mt-2 mb-4"

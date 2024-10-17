@@ -7,7 +7,6 @@ import {
   FaExternalLinkAlt,
   FaBuilding,
   FaGraduationCap,
-  FaEnvelope,
 } from "react-icons/fa";
 import { SiVelog } from "react-icons/si";
 import Slider, { Settings } from "react-slick";
@@ -15,7 +14,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Nav from "@/components/Nav";
 import About from "@/components/About";
-
+import Thumb from "@/components/Thumb"
 const MotionImage = motion(Image);
 
 interface ActivityImageProps {
@@ -249,47 +248,7 @@ export default function Home() {
     <div className={`${darkMode ? "dark" : ""} transition-colors duration-300`}>
       <main className="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white min-h-screen">
         <Nav darkMode={darkMode} setDarkMode={setDarkMode} />
-
-        <AnimatePresence>
-          <motion.section
-            id="hero"
-            className="relative w-full min-h-screen flex flex-col justify-center items-center"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            {/* 배경 이미지 */}
-            <div
-              className="absolute top-0 left-0 w-full h-full bg-cover bg-center z-0"
-              style={{ backgroundImage: "url('/hero-background.jpg')" }} // 이미지 경로를 적절히 수정해주세요
-            ></div>
-
-            {/* 반투명 오버레이 */}
-            <div className="absolute top-0 left-0 w-full h-full bg-black opacity-50 z-10"></div>
-
-            {/* 컨텐츠 */}
-            <div className="container mx-auto px-6 text-center relative z-20">
-              <motion.h2
-                className="text-6xl font-bold mb-4 text-white"
-                initial={{ y: -50, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.2, duration: 0.5 }}
-              >
-                Frontend Developer
-              </motion.h2>
-              <motion.h2
-                className="text-2xl mb-8 text-white"
-                initial={{ y: 50, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.4, duration: 0.5 }}
-              >
-                우다영의 포트폴리오에 오신 것을 환영합니다.
-              </motion.h2>
-            </div>
-          </motion.section>
-        </AnimatePresence>
-
+        <Thumb />
         <About />
 
         {/* Career Section */}

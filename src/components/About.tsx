@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { FaEnvelope, FaGithub } from "react-icons/fa";
 import { SiVelog } from "react-icons/si";
 
-const icons = [
+const iconList = [
   {
     title: "iamwooda0@gmail.com",
     icon: <FaEnvelope className="text-emerald-500 mr-3 text-xl" />,
@@ -18,7 +18,7 @@ const icons = [
     icon: <SiVelog className="text-emerald-500 mr-3 text-xl" />,
   },
 ];
-const introduces = [
+const introduceList = [
   {
     title: "원활한 의사 소통 능력",
     content:
@@ -73,7 +73,7 @@ const About = () => {
               👋🏻 안녕하세요 프론트엔드 개발자 우다영입니다.
             </h3>
             <div className="space-y-4">
-              {icons.map((el) => (
+              {iconList.map((el) => (
                 <motion.div
                   className="flex items-center"
                   whileHover={{ scale: 1.05 }}
@@ -94,7 +94,7 @@ const About = () => {
           transition={{ duration: 0.5 }}
         >
           <div className="space-y-6">
-            {introduces.map((el) => (
+            {introduceList.map((el) => (
               <motion.div
                 key={el.title}
                 className="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md"

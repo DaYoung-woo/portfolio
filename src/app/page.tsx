@@ -1,26 +1,22 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import {
   FaGithub,
-  FaMoon,
-  FaSun,
   FaExternalLinkAlt,
   FaBuilding,
   FaGraduationCap,
   FaEnvelope,
-  FaBars,
-  FaTimes,
 } from "react-icons/fa";
 import { SiVelog } from "react-icons/si";
 import Slider, { Settings } from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Nav from "@/components/Nav";
 
 const MotionImage = motion(Image);
 
-// ActivityImage 컴포넌트
 interface ActivityImageProps {
   src: string;
   alt: string;
@@ -199,15 +195,6 @@ const career = {
   ],
 };
 
-const navItems = [
-  "about",
-  "career",
-  "project",
-  "activities",
-  "certifications",
-  "contact",
-];
-
 interface CustomSliderSettings
   extends Omit<Settings, "appendDots" | "customPaging"> {
   appendDots?: (dots: React.ReactNode) => React.ReactElement;
@@ -217,8 +204,6 @@ interface CustomSliderSettings
 
 export default function Home() {
   const [darkMode, setDarkMode] = useState(false);
-  const [activeSection, setActiveSection] = useState("hero");
-  const [isOpen, setIsOpen] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const sliderSettings: CustomSliderSettings = {
@@ -259,109 +244,10 @@ export default function Home() {
     afterChange: (current) => setCurrentSlide(current),
   };
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentSection = navItems.find((section) => {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          return rect.top <= 100 && rect.bottom >= 100;
-        }
-        return false;
-      });
-      if (currentSection) setActiveSection(currentSection);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   return (
     <div className={`${darkMode ? "dark" : ""} transition-colors duration-300`}>
       <main className="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white min-h-screen">
-        <nav className="fixed top-0 left-0 right-0 bg-white dark:bg-gray-800 shadow-md z-50">
-          <div className="container mx-auto px-6">
-            <div className="flex justify-between items-center">
-              <motion.h1
-                className="font-bold text-emerald-500"
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-              >
-                <img src="/logo.svg" alt="Logo" width={120} height={120} />
-              </motion.h1>
-              <div className="hidden md:flex items-center space-x-4">
-                {navItems.map((item) => (
-                  <motion.a
-                    key={item}
-                    href={`#${item}`}
-                    className={`capitalize ${
-                      activeSection === item
-                        ? "text-emerald-500"
-                        : "hover:text-emerald-500"
-                    } transition-colors`}
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    {item}
-                  </motion.a>
-                ))}
-                <motion.button
-                  onClick={() => setDarkMode(!darkMode)}
-                  className="ml-4 text-emerald-500"
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  {darkMode ? <FaSun /> : <FaMoon />}
-                </motion.button>
-              </div>
-              <div className="md:hidden flex items-center">
-                <motion.button
-                  onClick={() => setDarkMode(!darkMode)}
-                  className="mr-4 text-emerald-500"
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  {darkMode ? <FaSun /> : <FaMoon />}
-                </motion.button>
-                <button
-                  onClick={() => setIsOpen(!isOpen)}
-                  className="text-gray-500 hover:text-gray-600 focus:outline-none focus:text-gray-600"
-                >
-                  {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
-                </button>
-              </div>
-            </div>
-          </div>
-          <AnimatePresence>
-            {isOpen && (
-              <motion.div
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: "auto" }}
-                exit={{ opacity: 0, height: 0 }}
-                transition={{ duration: 0.3 }}
-                className="md:hidden bg-white dark:bg-gray-800"
-              >
-                {navItems.map((item) => (
-                  <motion.a
-                    key={item}
-                    href={`#${item}`}
-                    className={`block px-6 py-2 capitalize ${
-                      activeSection === item
-                        ? "text-emerald-500"
-                        : "hover:text-emerald-500"
-                    } transition-colors`}
-                    onClick={() => setIsOpen(false)}
-                    whileHover={{ x: 5 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    {item}
-                  </motion.a>
-                ))}
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </nav>
+        <Nav darkMode={darkMode} setDarkMode={setDarkMode} />
 
         <AnimatePresence>
           <motion.section
@@ -663,12 +549,12 @@ export default function Home() {
                     {project.longDescription}
                   </p>
                   <div className="mb-6">
-                    <h4 className="text-xl font-semibold mb-2">사용 기술:</h4>
+                    <h4 className="text-xl font-semibold mb-2">사용 기술</h4>
                     <div className="flex flex-wrap">
                       {project.tech.map((tech, index) => (
                         <motion.span
                           key={tech}
-                          className="bg-emerald-100 dark:bg-emerald-900 text-emerald-800 dark:text-emerald-100 px-3 py-1 rounded-full text-sm mr-2 mb-2"
+                          className="bg-emerald-50 dark:bg-emerald-900 text-emerald-800 dark:text-emerald-100 px-3 py-1 rounded-full text-sm mr-2 mb-2"
                           initial={{ opacity: 0, x: -20 }}
                           animate={{ opacity: 1, x: 0 }}
                           transition={{ delay: index * 0.1 }}
@@ -762,36 +648,101 @@ export default function Home() {
                     <h5 className="text-gray-600 dark:text-gray-400 font-semibold">
                       {activity.experience}
                     </h5>
-                    <p className="text-gray-700 dark:text-gray-300">
+                    <p className="mb-4">
                       클라우드 애플리케이션 엔지니어링 데브코스 수업을 통해
                       React와 React Native에 대한 숙련도를 높였습니다.
                     </p>
-                    <p className="text-gray-700 dark:text-gray-300 mb-4">
-                      열정적으로 참여하여 개인 프로젝트에서 좋은 결과를 도출하여
-                      발표를 진행했습니다.
-                    </p>
-                    <div className="mb-4">
-                      <a
-                        className="flex items-center text-emerald-500 hover:underline mt-4 mb-2"
-                        href="https://video-editor-dayoung.netlify.app"
-                      >
-                        <FaExternalLinkAlt className="mr-2" /> Live Demo
-                      </a>
-                      <h4 className="text-xl font-semibold mb-2">
-                        Presentation Video
-                      </h4>
-                      <div className="relative overflow-hidden pb-[56.25%]">
-                        <motion.iframe
-                          src={activity.videoLink}
-                          frameBorder="0"
-                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                          allowFullScreen
-                          className="absolute top-0 left-0 w-full h-full"
-                          initial={{ opacity: 0, scale: 0.8 }}
-                          whileInView={{ opacity: 1, scale: 1 }}
-                          transition={{ duration: 0.5 }}
-                          viewport={{ once: true }}
-                        />
+
+                    <div className="mt-8">
+                      <div>
+                        <h4 className="text-xl font-bold">🎬 비디오 에디터</h4>
+                        <p className="text-gray-700 dark:text-gray-300">
+                          비디오 에디터는 영상을 gif, mp4, mp3 파일료 변환해주는
+                          웹어플리케이션입니다.
+                        </p>
+
+                        <div className="flex mt-4">
+                          <a
+                            className="flex items-center text-emerald-500 hover:underline "
+                            href="https://video-editor-dayoung.netlify.app"
+                          >
+                            <FaExternalLinkAlt className="mr-2" /> Live Demo
+                          </a>
+                          <a
+                            className="flex items-center text-emerald-500 hover:underline ml-2"
+                            href="https://video-editor-dayoung.netlify.app"
+                          >
+                            <FaGithub className="mr-2" /> View on GitHub
+                          </a>
+                        </div>
+
+                        {/* <h4 className="text-lg font-semibold mt-4 mb-2">
+                          사용 기술
+                        </h4>
+                        <div className="mb-4">
+                          {[
+                            "react",
+                            "Vite",
+                            "Chakra",
+                            "TailwindCSS",
+                            "FFmpeg",
+                          ].map((tech, index) => (
+                            <motion.span
+                              key={tech}
+                              className="bg-emerald-50 dark:bg-emerald-900 text-emerald-800 dark:text-emerald-100 px-3 py-1 rounded-full text-sm mr-2 mb-2"
+                              initial={{ opacity: 0, x: -20 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              transition={{ delay: index * 0.1 }}
+                            >
+                              {tech}
+                            </motion.span>
+                          ))}
+                        </div> */}
+
+                        {/* <div className="relative w-full">
+                          <div className="max-w-[768px] max-h-[365px] mx-auto">
+                            <Slider {...sliderSettings}>
+                              {[
+                                "/videoEditor1.png",
+                                "/videoEditor2.png",
+                                "/videoEditor3.png",
+                                "/videoEditor4.png",
+                                "/videoEditor5.png",
+                              ].map((image, index) => (
+                                <div key={index} className="w-full h-full">
+                                  <img
+                                    src={image}
+                                    alt={`Video Editor ${index + 1}`}
+                                    className="w-full h-full object-cover"
+                                  />
+                                </div>
+                              ))}
+                            </Slider>
+                          </div>
+                        </div> */}
+
+                        <p className="text-gray-700 dark:text-gray-300 mb-4 mt-8">
+                          비디오 에디터 프로젝트는 좋은 평가를 받아 발표를
+                          진행하였습니다.
+                        </p>
+                        <div className="max-w-[768px] mx-auto">
+                          <div
+                            className="relative w-full"
+                            style={{ aspectRatio: "16 / 9" }}
+                          >
+                            <motion.iframe
+                              src={activity.videoLink}
+                              frameBorder="0"
+                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                              allowFullScreen
+                              className="absolute top-0 left-0 w-full h-full"
+                              initial={{ opacity: 0, scale: 0.8 }}
+                              whileInView={{ opacity: 1, scale: 1 }}
+                              transition={{ duration: 0.5 }}
+                              viewport={{ once: true }}
+                            />
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </>
@@ -810,7 +761,7 @@ export default function Home() {
                     </p>
                     <p className="text-gray-700 dark:text-gray-300">
                       이 증상은 사용자 경험에 부정적인 영향을 미칠 수 있어 해당
-                      이슈를 리포트했습니다
+                      이슈를 리포트했습니다.
                     </p>
                     <a
                       className="flex items-center text-emerald-500 hover:underline mt-2 mb-4"

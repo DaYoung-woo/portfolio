@@ -14,6 +14,7 @@ import Slider, { Settings } from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Nav from "@/components/Nav";
+import About from "@/components/About";
 
 const MotionImage = motion(Image);
 
@@ -290,7 +291,8 @@ export default function Home() {
         </AnimatePresence>
 
         {/* About Section */}
-        <motion.section
+        <About />
+        {/* <motion.section
           id="about"
           className="bg-gradient-to-b from-white to-gray-100 dark:from-gray-800 dark:to-gray-900 py-20"
           initial={{ opacity: 0 }}
@@ -411,7 +413,7 @@ export default function Home() {
               </div>
             </motion.div>
           </div>
-        </motion.section>
+        </motion.section> */}
 
         {/* Career Section */}
         <motion.section

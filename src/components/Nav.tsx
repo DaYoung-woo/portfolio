@@ -12,13 +12,13 @@ const navItems = [
   "contact",
 ];
 
-function Nav({
+const Nav = ({
   darkMode,
   setDarkMode,
 }: {
   darkMode: boolean;
   setDarkMode: (darkMode: boolean) => void;
-}) {
+}) => {
   const [activeSection, setActiveSection] = useState("hero");
 
   useEffect(() => {
@@ -89,6 +89,6 @@ function Nav({
       </div>
     </nav>
   );
-}
+};
 
 export default Nav;

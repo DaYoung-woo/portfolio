@@ -7,21 +7,21 @@ const certificationList = [
     name: "정보처리기사",
     issuer: "한국산업인력공단",
     date: "2024-09-10",
-    img: "/kisa.png",
+    img: "/certification/kisa.png",
   },
   {
     id: 2,
     name: "리눅스마스터 2급",
     issuer: "한국정보통신진흥협회 ",
     date: "2024-06-28",
-    img: "/linux.png",
+    img: "/certification/linux.png",
   },
   {
     id: 3,
     name: "네트워크 관리사 2급",
     issuer: "한국정보통신자격협회",
     date: "2024-04-09",
-    img: "/network.png",
+    img: "/certification/network.png",
   },
 ];
 

@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { FaExternalLinkAlt, FaGraduationCap } from "react-icons/fa";
 import MotionVideo from "@/components/MotionVideo";
@@ -52,7 +51,7 @@ const Activity = () => {
             >
               <FaExternalLinkAlt className="mr-2" /> View Issue
             </a>
-            <MotionVideo src="/issue.mp4" />
+            <MotionVideo src="/open_source/issue.mp4" />
 
             <p className="text-gray-700 dark:text-gray-300 mt-12">
               해당 이슈를 같이 활동을 하는 팀원과 함께 짝코딩을 통해 문제를
@@ -72,7 +71,7 @@ const Activity = () => {
             >
               <FaExternalLinkAlt className="mr-2" /> View Pull Request
             </a>
-            <MotionVideo src="/fix.mp4" />
+            <MotionVideo src="/open_source/fix.mp4" />
           </motion.div>
         </div>
       </motion.section>

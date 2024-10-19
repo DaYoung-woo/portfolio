@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 const MotionVideo = ({ src }: { src: string }) => {
   return (
-    <div class="flex justify-center">
+    <div className="flex justify-center">
       <motion.video
         src={src} // Path to your video in the public folder
         autoPlay

@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 
 const certificationList = [
@@ -59,11 +60,14 @@ const Certification = () => {
               <p className="text-gray-600 dark:text-gray-400">
                 <b>Date</b> {cert.date}
               </p>
-              <img
-                src={cert.img}
-                alt={cert.name}
-                className="mt-2 w-full object-cover"
-              />
+              <div className="relative w-full h-96 mt-4">
+                <Image
+                  src={cert.img}
+                  alt={cert.name}
+                  className="object-contain h-auto w-full"
+                  fill
+                />
+              </div>
             </motion.div>
           ))}
         </div>

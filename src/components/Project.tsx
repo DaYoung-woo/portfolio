@@ -125,10 +125,10 @@ const project = [
               명세서 페이지
             </motion.a>
             <div className="mt-2 mb-2">
-            생산성을 높이고자 공통 컴포넌트에 대한 명세서를 작성하였습니다.
-            <br />
-            사진처럼 명세서에 사용법이 잘 정리되어 있기 때문에 다른 사람이 만든
-            컴포넌트도 쉽게 사용할 수 있었습니다.
+              생산성을 높이고자 공통 컴포넌트에 대한 명세서를 작성하였습니다.
+              <br />
+              사진처럼 명세서에 사용법이 잘 정리되어 있기 때문에 다른 사람이
+              만든 컴포넌트도 쉽게 사용할 수 있었습니다.
             </div>
             <div>
               <Image
@@ -193,7 +193,7 @@ const Project = () => {
                 <h3 className="text-xl font-semibold mt-8">배포 사이트</h3>
                 <div className="flex space-x-4 mb-4 mt-2">
                   <motion.a
-                    href={el.githubLink}
+                    href={el.liveLink}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center hover:underline text-emerald-500"

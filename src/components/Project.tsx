@@ -50,17 +50,34 @@ const project = [
       "기프티콘 상점/구매 기능",
       "문의하기 기능",
     ],
-    contributes: [
-      "카카로 로그인",
-      "약속 생성(멀티파트폼)",
-      "약속 리스트",
-      "약속 상세",
-      "상점 물품 리스트",
-    ],
     figma:
       "https://www.figma.com/design/gjdIDLNhgn25G0rBgcB8KA/Untitled?node-id=1-3129&t=roXpFo4MC4yzqovY-1",
     people: 4,
     details: [
+      {
+        title: "기여한 부분",
+        content: (
+          <ul className="list-disc list-inside text-gray-700 dark:text-gray-300">
+            {[
+              "약속 생성(멀티파트폼)",
+              "약속 리스트",
+              "약속 상세",
+              "상점 물품 리스트",
+            ].map((feature, i) => (
+              <motion.li
+                key={i}
+                className="mb-1"
+                initial={{ x: -20, opacity: 0 }}
+                whileInView={{ x: 0, opacity: 1 }}
+                transition={{ delay: i * 0.1, duration: 0.3 }}
+                viewport={{ once: true }}
+              >
+                {feature}
+              </motion.li>
+            ))}
+          </ul>
+        ),
+      },
       {
         title: "팀 소개 사이트",
         content: (

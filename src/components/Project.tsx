@@ -12,7 +12,7 @@ const project = [
     description:
       "Video Editor는 동영상을 편집할 수 있는 웹 서비스입니다.\n 비디오의 길이를 조절할 수 있으며 gif, mp3, mp4 파일로 변환이 가능합니다.",
     tech: ["React", "javascript", "ffmpeg", "Chakra UI", "tailwindcss"],
-    video: "/video_editor/videoEditor.mp4",
+    video: "/video_editor/video_editor.mp4",
     type: "web",
     githubLink: "https://github.com/DaYoung-woo/video-editor",
     liveLink: "https://video-editor-dayoung.netlify.app/",
@@ -33,7 +33,7 @@ const project = [
     tech: ["React", "React-native", "Supabase", "Typescript", "Zustand"],
     video: "/camping_together/camping_together.mp4",
     type: "app",
-    githubLink: "https://github.com/DaYoung-woo/CampingNativeApp/tree/dev",
+    githubLink: "https://github.com/DaYoung-woo/CampingNativeApp",
     features: [
       "캠핑장 리스트",
       "아티클(리스트/좋아요)",
@@ -148,7 +148,7 @@ const project = [
       {
         title: "공통 컴포넌트 문서화",
         content: (
-          <div className="mt-4 mb-2">
+          <div className="mt-4 mb-2 space-x-4 ">
             <motion.a
               href="https://truthful-paw-79e.notion.site/124b82cac40f8043a0d0f4cdd3975eed?v=124b82cac40f818db596000c7fc6d064&pvs=4"
               target="_blank"

@@ -7,6 +7,7 @@ import { SiNotion, SiFigma } from "react-icons/si";
 
 const project = [
   {
+    name: "video-editor",
     title: "🎬 Video Editor",
     description:
       "Video Editor는 동영상을 편집할 수 있는 웹 서비스입니다.\n 비디오의 길이를 조절할 수 있으며 gif, mp3, mp4 파일로 변환이 가능합니다.",
@@ -25,6 +26,24 @@ const project = [
     people: 1,
   },
   {
+    name: "camping-together",
+    title: "🏕️ Camping Together",
+    description:
+      "Camping Together는 OPEN API를 활용한 캠핑 커뮤니티 앱입니다.\n OPEN API를 활용해 캠핑장 리스트를 불러오며 캠핑 관련 아티클을 확인할 수 있습니다.\n 또한 캠핑을 좋아하는 사람들의 커뮤니티 기능도 제공합니다.\n 스켈레톤과 로딩바를 사용하여 더 나은 사용자 경험을 제공하고자 노력했습니다.",
+    tech: ["React", "React-native", "Supabase", "Typescript", "Zustand"],
+    video: "/camping_together/camping_together.mp4",
+    type: "app",
+    githubLink: "https://github.com/DaYoung-woo/CampingNativeApp/tree/dev",
+    features: [
+      "캠핑장 리스트",
+      "아티클(리스트/좋아요)",
+      "커뮤니티 게시판",
+      "마이페이지",
+    ],
+    people: 4,
+  },
+  {
+    name: "piggy",
     title: "🐽 PIGGY",
     description:
       "PIGGY는 사용자가 서로 약속을 생성하고, 그 정보를 함께 관리할 수 있는 커뮤니티 앱입니다.\n사용자는 약속 시간과 장소를 등록하고, 약속 시각에 해당 장소에서 위치 인증을 완료해야 합니다.\n인증에 성공하면 포인트를 획득할 수 있으며, 모은 포인트로 앱 내 상점에서 기프티콘을 구매할 수 있습니다.",
@@ -184,7 +203,7 @@ const Project = () => {
         {project.map((el) => (
           <motion.div
             key={el.title}
-            className="bg-gray-50 dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden p-4 mt-8"
+            className="bg-gray-50 dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden p-6 mt-8"
             whileHover={{ scale: 1.02 }}
             transition={{ duration: 0.3 }}
           >
@@ -256,7 +275,12 @@ const Project = () => {
               ) : (
                 <FaUsers className="mr-2" />
               )}
-              {el.people === 1 ? "1인 개인프로젝트" : "4인 팀프로젝트"}
+              {el.people === 1
+                ? "1인 개인프로젝트"
+                : "4인 팀프로젝트(4인 모두 프론트엔드 개발자로 백엔드는 supabase를 활용했습니다.)"}
+            </div>
+            <div className="flex items-center">
+              {el.name === "piggy" && <div></div>}
             </div>
 
             <h3 className="text-xl font-semibold mt-8 mb-2">주요 기능</h3>

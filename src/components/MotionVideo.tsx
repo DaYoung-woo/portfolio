@@ -15,7 +15,7 @@ const MotionVideo = ({ src }: { src: string }) => {
         style={{
           objectFit: "contain", // Ensures the video fits within its container
           width: "100%", // Responsive width for video
-          maxWidth: "680px", // Max width similar to your sizes attribute for images
+          maxWidth: "800px", // Max width similar to your sizes attribute for images
           height: "auto", // Maintain aspect ratio
         }}
       />

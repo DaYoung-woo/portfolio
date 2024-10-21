@@ -236,7 +236,7 @@ const Project = () => {
         {project.map((el) => (
           <motion.div
             key={el.title}
-            className="bg-gray-50 dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden p-6 mt-8"
+            className="rounded-lg shadow-lg overflow-hidden p-6 mt-8"
             whileHover={{ scale: 1.02 }}
             transition={{ duration: 0.3 }}
           >

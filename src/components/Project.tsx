@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import MotionVideo from "@/components/MotionVideo";
 import { FaGithub, FaExternalLinkAlt, FaUser, FaUsers } from "react-icons/fa";
 import { SiNotion, SiFigma } from "react-icons/si";
-import { details } from "framer-motion/client";
 
 const project = [
   {
@@ -124,99 +123,6 @@ const project = [
           </ul>
         ),
       },
-      {
-        title: "팀 소개 사이트",
-        content: (
-          <div className="flex space-x-4 mb-4 mt-2">
-            <motion.a
-              href="https://truthful-paw-79e.notion.site/641697039e7a4e598c3b0e660a529aea?pvs=4"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center hover:underline text-emerald-500"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <SiNotion className="mr-2 text-emerald-500" /> 팀 소개 노션 페이지
-            </motion.a>
-          </div>
-        ),
-      },
-      {
-        title: "기획 및 디자인",
-        content: (
-          <div className="mt-4 mb-2">
-            <div className="flex space-x-4 mb-4 mt-2">
-              <motion.a
-                href="https://www.figma.com/design/gjdIDLNhgn25G0rBgcB8KA/Untitled?node-id=0-1&t=O1DIH0eBImr2bW2O-1"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center hover:underline text-emerald-500"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <SiFigma className="mr-2 text-emerald-500" /> figma 프로토타입
-              </motion.a>
-            </div>
-            <div className="mt-2 mb-2">
-              figma를 통해 기획 및 포로토타입을 생성하여 관리했습니다.
-            </div>
-            <Image
-              src="/piggy/figma.png"
-              alt="피그마 이미지"
-              width={720}
-              height={400}
-              style={{
-                objectFit: "contain",
-                width: "100%",
-                margin: "0 auto",
-                position: "relative",
-                maxWidth: "720px",
-              }}
-            />
-          </div>
-        ),
-      },
-      {
-        title: "공통 컴포넌트 문서화",
-        content: (
-          <div className="mt-4 mb-2 ">
-            <div className="flex space-x-4 mb-4 mt-2">
-              <motion.a
-                href="https://truthful-paw-79e.notion.site/124b82cac40f8043a0d0f4cdd3975eed?v=124b82cac40f818db596000c7fc6d064&pvs=4"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center hover:underline text-emerald-500"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <SiNotion className="mr-2 text-emerald-500" /> 공통 컴포넌트
-                명세서 페이지
-              </motion.a>
-            </div>
-            <div className="mt-2 mb-2">
-              생산성을 높이고자 공통 컴포넌트에 대한 명세서를 작성하였습니다.
-              <br />
-              사진처럼 명세서에 사용법이 잘 정리되어 있기 때문에 다른 사람이
-              만든 컴포넌트도 쉽게 사용할 수 있었습니다.
-            </div>
-            <div>
-              <Image
-                src="/piggy/components.png"
-                alt="피그마 이미지"
-                width={720}
-                height={400}
-                style={{
-                  objectFit: "contain",
-                  width: "100%",
-                  margin: "0 auto",
-                  position: "relative",
-                  maxWidth: "720px",
-                }}
-              />
-            </div>
-          </div>
-        ),
-      },
     ],
   },
 ];
@@ -244,103 +150,216 @@ const Project = () => {
             <p className="my-4 text-gray-700 dark:text-gray-300 whitespace-pre-wrap">
               {el.description}
             </p>
-            <h3 className="text-xl font-semibold mt-8">GitHub 레포지토리</h3>
-            <div className="flex space-x-4 mb-4 mt-2">
-              <motion.a
-                href={el.githubLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center hover:underline text-emerald-500"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <FaGithub className="mr-2 text-emerald-500" /> GitHub 레포지토리
-              </motion.a>
-            </div>
-            {el.liveLink && (
-              <div>
-                <h3 className="text-xl font-semibold mt-8">배포 사이트</h3>
+
+            <div
+              className={el.type === "web" ? "" : "flex flex-col lg:flex-row"}
+            >
+              <div className={el.type === "web" ? "" : "lg:w-1/3 p-6"}>
+                <div
+                  className="mx-auto relative"
+                  style={
+                    el.type === "web" ? {} : { width: "279", height: "540px" }
+                  }
+                >
+                  <MotionVideo src={el.video} />
+                </div>
+              </div>
+
+              <div className="lg:w-2/3 p-6">
+                <h3
+                  className={`text-xl font-semibold mb-2 ${el.type === "web" && "mt-8"}`}
+                >
+                  GitHub 레포지토리
+                </h3>
                 <div className="flex space-x-4 mb-4 mt-2">
                   <motion.a
-                    href={el.liveLink}
+                    href={el.githubLink}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center hover:underline text-emerald-500"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    <FaExternalLinkAlt className="mr-2 text-emerald-500" /> Live
-                    Demo
+                    <FaGithub className="mr-2 text-emerald-500" /> GitHub
+                    레포지토리
                   </motion.a>
                 </div>
-              </div>
-            )}
-            <div
-              className="mx-auto relative"
-              style={
-                el.type === "web" ? {} : { width: "300px", height: "540px" }
-              }
-            >
-              <MotionVideo src={el.video} />
-            </div>
 
-            <h3 className="text-xl font-semibold mt-8 mb-2">사용 기술</h3>
-            <div className="flex flex-wrap">
-              {el.tech.map((tech, index) => (
-                <motion.span
-                  key={tech}
-                  className="bg-emerald-50 dark:bg-emerald-900 text-emerald-800 dark:text-emerald-100 px-3 py-1 rounded-full text-sm mr-2 mb-2"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                >
-                  {tech}
-                </motion.span>
-              ))}
-            </div>
+                {el.liveLink && (
+                  <div>
+                    <h3 className="text-xl font-semibold mt-8">배포 사이트</h3>
+                    <div className="flex space-x-4 mb-4 mt-2">
+                      <motion.a
+                        href={el.liveLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center hover:underline text-emerald-500"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        <FaExternalLinkAlt className="mr-2 text-emerald-500" />{" "}
+                        Live Demo
+                      </motion.a>
+                    </div>
+                  </div>
+                )}
 
-            <h3 className="text-xl font-semibold mt-8 mb-2">
-              프로젝트 참여인원
-            </h3>
-            <div className="flex items-center">
-              {el.people === 1 ? (
-                <FaUser className="mr-2" />
-              ) : (
-                <FaUsers className="mr-2" />
-              )}
-              {el.people === 1
-                ? "1인 개인프로젝트"
-                : "4인 팀프로젝트(4인 모두 프론트엔드 개발자로 백엔드는 supabase를 활용했습니다.)"}
-            </div>
-            <div className="flex items-center">
-              {el.name === "piggy" && <div></div>}
-            </div>
-
-            <h3 className="text-xl font-semibold mt-8 mb-2">주요 기능</h3>
-            <ul className="list-disc list-inside text-gray-700 dark:text-gray-300">
-              {el.features.map((feature, i) => (
-                <motion.li
-                  key={i}
-                  className="mb-1"
-                  initial={{ x: -20, opacity: 0 }}
-                  whileInView={{ x: 0, opacity: 1 }}
-                  transition={{ delay: i * 0.1, duration: 0.3 }}
-                  viewport={{ once: true }}
-                >
-                  {feature}
-                </motion.li>
-              ))}
-            </ul>
-
-            {el?.details?.length &&
-              el.details.map((detail) => (
-                <div key={detail.title}>
-                  <h3 className="text-xl font-semibold mt-8 mb-2">
-                    {detail.title}
-                  </h3>
-                  {detail.content}
+                {el.name === "piggy" && (
+                  <>
+                    <h3 className={`text-xl font-semibold mb-2 mt-8`}>
+                      팀 노션 페이지
+                    </h3>
+                    <div className="flex space-x-4 mb-4 mt-2">
+                      <motion.a
+                        href="https://truthful-paw-79e.notion.site/641697039e7a4e598c3b0e660a529aea?pvs=4"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center hover:underline text-emerald-500"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        <SiNotion className="mr-2 text-emerald-500" /> 팀 소개
+                        노션 페이지
+                      </motion.a>
+                    </div>
+                  </>
+                )}
+                <h3 className="text-xl font-semibold mt-8">사용 기술</h3>
+                <div className="flex flex-wrap">
+                  {el.tech.map((tech, index) => (
+                    <motion.span
+                      key={tech}
+                      className="bg-emerald-50 dark:bg-emerald-900 text-emerald-800 dark:text-emerald-100 px-3 py-1 rounded-full text-sm mr-2 mb-2"
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: index * 0.1 }}
+                    >
+                      {tech}
+                    </motion.span>
+                  ))}
                 </div>
-              ))}
+
+                <h3 className="text-xl font-semibold mt-8 mb-2">
+                  프로젝트 참여인원
+                </h3>
+                <div className="flex items-center">
+                  {el.people === 1 ? (
+                    <FaUser className="mr-2" />
+                  ) : (
+                    <FaUsers className="mr-2" />
+                  )}
+                  {el.people === 1
+                    ? "1인 개인프로젝트"
+                    : "4인 팀프로젝트(4인 모두 프론트엔드 개발자로 백엔드는 supabase를 활용했습니다.)"}
+                </div>
+                <div className="flex items-center">
+                  {el.name === "piggy" && <div></div>}
+                </div>
+
+                <h3 className="text-xl font-semibold mt-8 mb-2">주요 기능</h3>
+                <ul className="list-disc list-inside text-gray-700 dark:text-gray-300">
+                  {el.features.map((feature, i) => (
+                    <motion.li
+                      key={i}
+                      className="mb-1"
+                      initial={{ x: -20, opacity: 0 }}
+                      whileInView={{ x: 0, opacity: 1 }}
+                      transition={{ delay: i * 0.1, duration: 0.3 }}
+                      viewport={{ once: true }}
+                    >
+                      {feature}
+                    </motion.li>
+                  ))}
+                </ul>
+                {el?.details?.length &&
+                  el.details.map((detail) => (
+                    <div key={detail.title}>
+                      <h3 className="text-xl font-semibold mt-8 mb-2">
+                        {detail.title}
+                      </h3>
+                      {detail.content}
+                    </div>
+                  ))}
+              </div>
+            </div>
+
+            {el.name === "piggy" && (
+              <>
+                <h3 className="text-xl font-semibold mb-2">기획 및 디자인</h3>
+                <div className="mt-4 mb-2">
+                  <div className="flex space-x-4 mb-4 mt-2">
+                    <motion.a
+                      href="https://www.figma.com/design/gjdIDLNhgn25G0rBgcB8KA/Untitled?node-id=0-1&t=O1DIH0eBImr2bW2O-1"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center hover:underline text-emerald-500"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      <SiFigma className="mr-2 text-emerald-500" /> figma
+                      프로토타입
+                    </motion.a>
+                  </div>
+                  <div className="mt-2 mb-2">
+                    figma를 통해 기획 및 포로토타입을 생성하여 관리했습니다.
+                  </div>
+                  <Image
+                    src="/piggy/figma.png"
+                    alt="피그마 이미지"
+                    width={720}
+                    height={400}
+                    style={{
+                      objectFit: "contain",
+                      width: "100%",
+                      margin: "0 auto",
+                      position: "relative",
+                      maxWidth: "720px",
+                    }}
+                  />
+                </div>
+
+                <h3 className="text-xl font-semibold mt-8 mb-2">
+                  공통 컴포넌트 문서화
+                </h3>
+                <div className="mt-4 mb-2 ">
+                  <div className="flex space-x-4 mb-4 mt-2">
+                    <motion.a
+                      href="https://truthful-paw-79e.notion.site/124b82cac40f8043a0d0f4cdd3975eed?v=124b82cac40f818db596000c7fc6d064&pvs=4"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center hover:underline text-emerald-500"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      <SiNotion className="mr-2 text-emerald-500" /> 공통
+                      컴포넌트 명세서 페이지
+                    </motion.a>
+                  </div>
+                  <div className="mt-2 mb-2">
+                    생산성을 높이고자 공통 컴포넌트에 대한 명세서를
+                    작성하였습니다.
+                    <br />
+                    사진처럼 명세서에 사용법이 잘 정리되어 있기 때문에 다른
+                    사람이 만든 컴포넌트도 쉽게 사용할 수 있었습니다.
+                  </div>
+                  <div>
+                    <Image
+                      src="/piggy/components.png"
+                      alt="피그마 이미지"
+                      width={720}
+                      height={400}
+                      style={{
+                        objectFit: "contain",
+                        width: "100%",
+                        margin: "0 auto",
+                        position: "relative",
+                        maxWidth: "720px",
+                      }}
+                    />
+                  </div>
+                </div>
+              </>
+            )}
           </motion.div>
         ))}
       </div>

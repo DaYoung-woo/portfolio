@@ -224,7 +224,7 @@ const Project = () => {
                     </div>
                   </>
                 )}
-                <h3 className="text-xl font-semibold mt-8">사용 기술</h3>
+                <h3 className="text-xl font-semibold mt-8 mb-2">사용 기술</h3>
                 <div className="flex flex-wrap">
                   {el.tech.map((tech, index) => (
                     <motion.span

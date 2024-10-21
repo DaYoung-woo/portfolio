@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import MotionVideo from "@/components/MotionVideo";
 import { FaGithub, FaExternalLinkAlt, FaUser, FaUsers } from "react-icons/fa";
 import { SiNotion, SiFigma } from "react-icons/si";
+import { details } from "framer-motion/client";
 
 const project = [
   {
@@ -17,11 +18,12 @@ const project = [
     githubLink: "https://github.com/DaYoung-woo/video-editor",
     liveLink: "https://video-editor-dayoung.netlify.app/",
     features: [
-      "다크/라이트 모드",
       "영상 길이 조절",
       "GIF 변환",
       "MP3 변환",
       "MP4 변환",
+      "다크/라이트 모드",
+      "반응형",
     ],
     people: 1,
   },
@@ -29,18 +31,43 @@ const project = [
     name: "camping-together",
     title: "🏕️ Camping Together",
     description:
-      "Camping Together는 OPEN API를 활용한 캠핑 커뮤니티 앱입니다.\n OPEN API를 활용해 캠핑장 리스트를 불러오며 캠핑 관련 아티클을 확인할 수 있습니다.\n 또한 캠핑을 좋아하는 사람들의 커뮤니티 기능도 제공합니다.\n 스켈레톤과 로딩바를 사용하여 더 나은 사용자 경험을 제공하고자 노력했습니다.",
+      "Camping Together는 OPEN API를 활용한 캠핑 커뮤니티 앱입니다.\n OPEN API를 활용해 캠핑장 리스트를 불러오고 있습니다. \n 수파베이스를 통해 캠핑 관련 아티클을 확인할 수 있고 캠핑을 좋아하는 사람들의 커뮤니티 기능도 제공합니다.\n 스켈레톤과 로딩바를 사용하여 더 나은 사용자 경험을 제공하고자 노력했습니다.",
     tech: ["React", "React-native", "Supabase", "Typescript", "Zustand"],
     video: "/camping_together/camping_together.mp4",
     type: "app",
     githubLink: "https://github.com/DaYoung-woo/CampingNativeApp",
     features: [
-      "캠핑장 리스트",
-      "아티클(리스트/좋아요)",
-      "커뮤니티 게시판",
-      "마이페이지",
+      "캠핑장 리스트/상세보기",
+      "아티클 리스트/상세/좋아요",
+      "커뮤니티 게시판(리스트, 글 작성/수정/삭제, 댓글 리스트, 댓글 작성/수정/삭제)",
+      "마이페이지(프로필 정보 수정)",
     ],
     people: 4,
+    details: [
+      {
+        title: "기여한 부분",
+        content: (
+          <ul className="list-disc list-inside text-gray-700 dark:text-gray-300">
+            {[
+              "전반적인 앱 디자인",
+              "캠핑장 리스트/상세보기",
+              "프로필 정보 수정",
+            ].map((feature, i) => (
+              <motion.li
+                key={i}
+                className="mb-1"
+                initial={{ x: -20, opacity: 0 }}
+                whileInView={{ x: 0, opacity: 1 }}
+                transition={{ delay: i * 0.1, duration: 0.3 }}
+                viewport={{ once: true }}
+              >
+                {feature}
+              </motion.li>
+            ))}
+          </ul>
+        ),
+      },
+    ],
   },
   {
     name: "piggy",

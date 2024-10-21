@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import MotionVideo from "@/components/MotionVideo";
 import { FaGithub, FaExternalLinkAlt, FaUser, FaUsers } from "react-icons/fa";
 import { SiNotion, SiFigma } from "react-icons/si";
+import { details } from "framer-motion/client";
 
 const project = [
   {
@@ -17,11 +18,12 @@ const project = [
     githubLink: "https://github.com/DaYoung-woo/video-editor",
     liveLink: "https://video-editor-dayoung.netlify.app/",
     features: [
-      "다크/라이트 모드",
       "영상 길이 조절",
       "GIF 변환",
       "MP3 변환",
       "MP4 변환",
+      "다크/라이트 모드",
+      "반응형",
     ],
     people: 1,
   },
@@ -29,18 +31,43 @@ const project = [
     name: "camping-together",
     title: "🏕️ Camping Together",
     description:
-      "Camping Together는 OPEN API를 활용한 캠핑 커뮤니티 앱입니다.\n OPEN API를 활용해 캠핑장 리스트를 불러오며 캠핑 관련 아티클을 확인할 수 있습니다.\n 또한 캠핑을 좋아하는 사람들의 커뮤니티 기능도 제공합니다.\n 스켈레톤과 로딩바를 사용하여 더 나은 사용자 경험을 제공하고자 노력했습니다.",
+      "Camping Together는 OPEN API를 활용한 캠핑 커뮤니티 앱입니다.\n OPEN API를 활용해 캠핑장 리스트를 불러오고 있습니다. \n 수파베이스를 통해 캠핑 관련 아티클을 확인할 수 있고 캠핑을 좋아하는 사람들의 커뮤니티 기능도 제공합니다.\n 스켈레톤과 로딩바를 사용하여 더 나은 사용자 경험을 제공하고자 노력했습니다.",
     tech: ["React", "React-native", "Supabase", "Typescript", "Zustand"],
     video: "/camping_together/camping_together.mp4",
     type: "app",
     githubLink: "https://github.com/DaYoung-woo/CampingNativeApp",
     features: [
-      "캠핑장 리스트",
-      "아티클(리스트/좋아요)",
-      "커뮤니티 게시판",
-      "마이페이지",
+      "캠핑장 리스트/상세보기",
+      "아티클 리스트/상세/좋아요",
+      "커뮤니티 게시판(리스트, 글 작성/수정/삭제, 댓글 리스트, 댓글 작성/수정/삭제)",
+      "마이페이지(프로필 정보 수정)",
     ],
     people: 4,
+    details: [
+      {
+        title: "기여한 부분",
+        content: (
+          <ul className="list-disc list-inside text-gray-700 dark:text-gray-300">
+            {[
+              "전반적인 앱 디자인",
+              "캠핑장 리스트/상세보기",
+              "프로필 정보 수정",
+            ].map((feature, i) => (
+              <motion.li
+                key={i}
+                className="mb-1"
+                initial={{ x: -20, opacity: 0 }}
+                whileInView={{ x: 0, opacity: 1 }}
+                transition={{ delay: i * 0.1, duration: 0.3 }}
+                viewport={{ once: true }}
+              >
+                {feature}
+              </motion.li>
+            ))}
+          </ul>
+        ),
+      },
+    ],
   },
   {
     name: "piggy",
@@ -100,32 +127,36 @@ const project = [
       {
         title: "팀 소개 사이트",
         content: (
-          <motion.a
-            href="https://truthful-paw-79e.notion.site/641697039e7a4e598c3b0e660a529aea?pvs=4"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center hover:underline text-emerald-500"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <SiNotion className="mr-2 text-emerald-500" /> 팀 소개 노션 페이지
-          </motion.a>
-        ),
-      },
-      {
-        title: "기획 및 디자인",
-        content: (
-          <div className="mt-4 mb-2">
+          <div className="flex space-x-4 mb-4 mt-2">
             <motion.a
-              href="https://www.figma.com/design/gjdIDLNhgn25G0rBgcB8KA/Untitled?node-id=0-1&t=O1DIH0eBImr2bW2O-1"
+              href="https://truthful-paw-79e.notion.site/641697039e7a4e598c3b0e660a529aea?pvs=4"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center hover:underline text-emerald-500"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <SiFigma className="mr-2 text-emerald-500" /> figma 프로토타입
+              <SiNotion className="mr-2 text-emerald-500" /> 팀 소개 노션 페이지
             </motion.a>
+          </div>
+        ),
+      },
+      {
+        title: "기획 및 디자인",
+        content: (
+          <div className="mt-4 mb-2">
+            <div className="flex space-x-4 mb-4 mt-2">
+              <motion.a
+                href="https://www.figma.com/design/gjdIDLNhgn25G0rBgcB8KA/Untitled?node-id=0-1&t=O1DIH0eBImr2bW2O-1"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center hover:underline text-emerald-500"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <SiFigma className="mr-2 text-emerald-500" /> figma 프로토타입
+              </motion.a>
+            </div>
             <div className="mt-2 mb-2">
               figma를 통해 기획 및 포로토타입을 생성하여 관리했습니다.
             </div>
@@ -148,18 +179,20 @@ const project = [
       {
         title: "공통 컴포넌트 문서화",
         content: (
-          <div className="mt-4 mb-2 space-x-4 ">
-            <motion.a
-              href="https://truthful-paw-79e.notion.site/124b82cac40f8043a0d0f4cdd3975eed?v=124b82cac40f818db596000c7fc6d064&pvs=4"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center hover:underline text-emerald-500"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <SiNotion className="mr-2 text-emerald-500" /> 공통 컴포넌트
-              명세서 페이지
-            </motion.a>
+          <div className="mt-4 mb-2 ">
+            <div className="flex space-x-4 mb-4 mt-2">
+              <motion.a
+                href="https://truthful-paw-79e.notion.site/124b82cac40f8043a0d0f4cdd3975eed?v=124b82cac40f818db596000c7fc6d064&pvs=4"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center hover:underline text-emerald-500"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <SiNotion className="mr-2 text-emerald-500" /> 공통 컴포넌트
+                명세서 페이지
+              </motion.a>
+            </div>
             <div className="mt-2 mb-2">
               생산성을 높이고자 공통 컴포넌트에 대한 명세서를 작성하였습니다.
               <br />
@@ -203,7 +236,7 @@ const Project = () => {
         {project.map((el) => (
           <motion.div
             key={el.title}
-            className="bg-gray-50 dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden p-6 mt-8"
+            className="rounded-lg shadow-lg overflow-hidden p-6 mt-8"
             whileHover={{ scale: 1.02 }}
             transition={{ duration: 0.3 }}
           >

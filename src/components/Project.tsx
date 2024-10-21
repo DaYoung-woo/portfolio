@@ -100,32 +100,36 @@ const project = [
       {
         title: "팀 소개 사이트",
         content: (
-          <motion.a
-            href="https://truthful-paw-79e.notion.site/641697039e7a4e598c3b0e660a529aea?pvs=4"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center hover:underline text-emerald-500"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <SiNotion className="mr-2 text-emerald-500" /> 팀 소개 노션 페이지
-          </motion.a>
-        ),
-      },
-      {
-        title: "기획 및 디자인",
-        content: (
-          <div className="mt-4 mb-2">
+          <div className="flex space-x-4 mb-4 mt-2">
             <motion.a
-              href="https://www.figma.com/design/gjdIDLNhgn25G0rBgcB8KA/Untitled?node-id=0-1&t=O1DIH0eBImr2bW2O-1"
+              href="https://truthful-paw-79e.notion.site/641697039e7a4e598c3b0e660a529aea?pvs=4"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center hover:underline text-emerald-500"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <SiFigma className="mr-2 text-emerald-500" /> figma 프로토타입
+              <SiNotion className="mr-2 text-emerald-500" /> 팀 소개 노션 페이지
             </motion.a>
+          </div>
+        ),
+      },
+      {
+        title: "기획 및 디자인",
+        content: (
+          <div className="mt-4 mb-2">
+            <div className="flex space-x-4 mb-4 mt-2">
+              <motion.a
+                href="https://www.figma.com/design/gjdIDLNhgn25G0rBgcB8KA/Untitled?node-id=0-1&t=O1DIH0eBImr2bW2O-1"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center hover:underline text-emerald-500"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <SiFigma className="mr-2 text-emerald-500" /> figma 프로토타입
+              </motion.a>
+            </div>
             <div className="mt-2 mb-2">
               figma를 통해 기획 및 포로토타입을 생성하여 관리했습니다.
             </div>
@@ -148,18 +152,20 @@ const project = [
       {
         title: "공통 컴포넌트 문서화",
         content: (
-          <div className="mt-4 mb-2 space-x-4 ">
-            <motion.a
-              href="https://truthful-paw-79e.notion.site/124b82cac40f8043a0d0f4cdd3975eed?v=124b82cac40f818db596000c7fc6d064&pvs=4"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center hover:underline text-emerald-500"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <SiNotion className="mr-2 text-emerald-500" /> 공통 컴포넌트
-              명세서 페이지
-            </motion.a>
+          <div className="mt-4 mb-2 ">
+            <div className="flex space-x-4 mb-4 mt-2">
+              <motion.a
+                href="https://truthful-paw-79e.notion.site/124b82cac40f8043a0d0f4cdd3975eed?v=124b82cac40f818db596000c7fc6d064&pvs=4"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center hover:underline text-emerald-500"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <SiNotion className="mr-2 text-emerald-500" /> 공통 컴포넌트
+                명세서 페이지
+              </motion.a>
+            </div>
             <div className="mt-2 mb-2">
               생산성을 높이고자 공통 컴포넌트에 대한 명세서를 작성하였습니다.
               <br />

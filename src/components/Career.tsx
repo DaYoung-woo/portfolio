@@ -23,7 +23,7 @@ const careerExperienceList = [
     duration: "1년 4개월",
     period: "2022.12 ~ 2024.03",
     description:
-      "SHIELDRM은 DRM 문서를 사용자 PC로 다운로드하지 않고도 클라우드 환경에서 공동편집할 수 있는 서비스입니다. SK쉴더스, SK 넥실리스, DRB동일 등 여러 기업에 납품하였습니다.",
+      "SHIELDRM은 DRM 문서를 사용자 PC로 다운로드하지 않고도 클라우드 환경에서 공동편집할 수 있는 서비스입니다. \nSK쉴더스, SK 넥실리스, DRB동일 등 여러 기업에 납품하였습니다.",
     experiences: [
       "메인 프론트엔드 개발자로 프로젝트 생성과 파일과 폴더의 구조 설계",
       "사용자 OAuth 로그인 기능 및 MS 로그인을 위한 MSAL 라이브러리를 활용한 로그인 기능 구현",
@@ -44,7 +44,7 @@ const careerExperienceList = [
     duration: "7개월",
     period: "2022.03 ~ 2022.10",
     description:
-      "SHIELDGate는 제로트러스트 보안을 기반으로 하는 조건부 접근 정책을 적용한 원격 접속 서비스입니다. GS인증을 받은 제품입니다.",
+      "SHIELDGate는 제로트러스트 보안을 기반으로 하는 조건부 접근 정책을 적용한 원격 접속 서비스입니다. \nGS인증을 받은 제품입니다.",
     experiences: [
       "접속 위치, 시간에 따라 사용자의 접근을 제어하는 조건부 정책 관리 기능 구현",
       "업무 시스템을 연결할 앱 관리 기능 구현",
@@ -82,7 +82,7 @@ const Career = () => {
       <div className="container mx-auto px-6">
         <h2 className="text-4xl font-bold mb-8 text-emerald-500">Career</h2>
         <motion.div
-          className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6"
+          className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 "
           initial={{ y: 50, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5 }}
@@ -126,7 +126,7 @@ const Career = () => {
                 {/* <FaBriefcase className="text-2xl text-emerald-500 mr-2" /> */}
                 <h3 className="text-xl font-semibold ">{experience.company}</h3>
               </div>
-              <p className="text-gray-600 dark:text-gray-400 mb-2">
+              <p className="text-gray-600 dark:text-gray-400 mb-2 whitespace-pre-wrap">
                 {experience.description}
               </p>
               <h4 className="font-semibold mb-2">Experience:</h4>

@@ -60,14 +60,6 @@ const Certification = () => {
               <p className="text-gray-600 dark:text-gray-400">
                 <b>Date</b> {cert.date}
               </p>
-              <div className="relative w-full h-96 mt-4">
-                <Image
-                  src={cert.img}
-                  alt={cert.name}
-                  className="object-contain h-auto w-full"
-                  fill
-                />
-              </div>
             </motion.div>
           ))}
         </div>
